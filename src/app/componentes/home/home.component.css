@@ -1,0 +1,80 @@
+
+.pelicula-principal{
+  font-size: 16px;
+  min-height: 40.62em;
+  color: #FFF;
+  background: linear-gradient(rgba(0,0,0,.50) 0%, rgba(0,0,0,.50) 100%), url(../../../assets/imagenes/dashboard2.jpg);
+  background-position: center center;
+  background-size: cover;
+  margin-bottom: 3.12em;
+  
+
+}
+.div__descripcion{
+  margin-top:200px;
+  margin-bottom: 100px;
+}
+.div__descripcion h1{
+  color: #f8a488;
+}
+.div__descripcion p{
+  font-size: 20px;
+}
+
+.card__img{
+  border-radius:20px;
+}
+.h3__servicios{
+  color: #f8a488;
+  margin-bottom: 20px;
+}
+.titulos__servicios{
+  color: #5aa897;
+}
+
+.p__servicios{
+  color:#45526c;
+}
+
+.div__invitacion{
+  background-color: #5aa897;
+  border-radius: 25px;
+  margin-top:40px;
+  margin-bottom: 40px;
+}
+.div_img{
+
+}
+.div_img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 20px;
+  border-radius: 35px;
+}
+.div__descripcion-invitacion{
+  margin: 100px;
+}
+.div__descripcion-invitacion h3{
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+}
+.div__descripcion-invitacion p{
+  color: #fff;
+  font-size: 20px;
+}
+.div__descripcion-invitacion a{
+  background-color: #f8f5f1;
+  border-radius: 10px;
+  border: none;
+  color: #f8a488;
+  font-size: 20px;
+}
+.div__descripcion-invitacion a:hover{
+  background-color: #f8a488;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+}
