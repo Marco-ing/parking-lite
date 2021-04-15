@@ -9,6 +9,7 @@ import { UsoComponent } from './componentes/uso/uso.component';
 import { EntradaComponent } from './componentes/entrada/entrada.component';
 import { CuentaComponent } from './componentes/cuenta/cuenta.component';
 import { FooterComponent } from './componentes/dashboard/footer/footer.component';
+import { AutenticarseFormComponent } from './componentes/autenticarse-form/autenticarse-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FooterComponent } from './componentes/dashboard/footer/footer.component
     UsoComponent,
     EntradaComponent,
     CuentaComponent,
-    FooterComponent
+    FooterComponent,
+    AutenticarseFormComponent
   ],
   imports: [
     BrowserModule,
