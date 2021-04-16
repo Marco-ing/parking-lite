@@ -2,6 +2,7 @@ import { Injectable,Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { Users } from '../Users';
 
 
 @Injectable({
@@ -10,8 +11,8 @@ import { map } from 'rxjs/operators';
 export class AutenticarseSService {
 
   redirectUrl:string;
-  URL='http://localhost/PHP/';
-  baseURL:string='http://localhost/PHP/';
+  URL='http://localhost/parking-lite/PHP/';
+  baseURL:string='http://localhost/parking-lite/PHP/';
 
   @Output() getLoggedInName: EventEmitter<any>=new EventEmitter();
 
@@ -20,7 +21,8 @@ export class AutenticarseSService {
   VerificarDatos(email,password){
     return this.httpClient.post<any>(this.baseURL+'Autenticarse.php',{email,password})
     .pipe(map(Users => {
-      this.setToken(Users[0].name);
+      console.log(Users[0].correo);
+      this.setToken(Users[0].correo);
       this.getLoggedInName.emit(true);
       return Users;
     }));

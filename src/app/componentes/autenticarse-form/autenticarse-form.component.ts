@@ -4,8 +4,7 @@ import {AutenticarseSService} from '../../service/autenticarse-s.service';
 import { FormsModule, FormGroup, FormBuilder, Validators, NgForm, ReactiveFormsModule} from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
-declare var ventana4:any;
+//declare var ventana4:any;
 
 @Component({
   selector: 'app-autenticarse-form',
@@ -22,7 +21,7 @@ export class AutenticarseFormComponent implements OnInit {
     password:null
   }
   constructor(private AutenticarseSService: AutenticarseSService,private http: HttpClient,
-    private FormBuilder: FormBuilder, private router: Router ) { }
+    private FormBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.autenticarse=this.FormBuilder.group({
@@ -42,7 +41,7 @@ export class AutenticarseFormComponent implements OnInit {
   }
 
   ventana4(){
-    this.ventana4;
+    
   }
 
   Autenticarse_(autenticarse):void{
@@ -54,7 +53,7 @@ export class AutenticarseFormComponent implements OnInit {
         this.router.navigate([redirect]);
       },
       error => {
-        ventana4();
+        alert("Usurio no registrado.");
       }
     );
   }
