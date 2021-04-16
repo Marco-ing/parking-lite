@@ -1,26 +1,30 @@
-<nav class="navbar navbar-expand-lg contenido__nav navbar-dark">
-  <div class="container-fluid caja__nav">
-    <a class="navbar-brand" [routerLink]="['home']">PARKING-LITE</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" [routerLink]="['uso']" routerLinkActive="active">Modode Uso</a>
-        </li> 
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['entrada']" routerLinkActive="active">Registrar Entrada</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['cuenta']" routerLinkActive="active">Pagar Cuenta</a>
-        </li>
-
-      </ul>
-      <form class="d-flex">
-        <button class="btn btn-outline-success m-2 btn__registro" type="submit">Hazte cliente</button>
-        <button class="btn btn-outline-success m-2 btn__inicio" type="submit">Iniciar sesion</button>
-      </form>
+<div *ngIf="!MostrarBarra">
+  <nav class="navbar navbar-expand-lg contenido__nav navbar-dark">
+    <div class="container-fluid caja__nav">
+      <a class="navbar-brand" [routerLink]="['home']">PARKING-LITE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" [routerLink]="['uso']" routerLinkActive="active">Modode Uso</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['entrada']" routerLinkActive="active">Registrar Entrada</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['cuenta']" routerLinkActive="active">Pagar Cuenta</a>
+          </li>
+  
+        </ul>
+        <form class="d-flex">
+          <button class="btn btn-outline-success m-2 btn__registro " type="submit">Hazte cliente</button>
+          <button class="btn btn-outline-success m-2 btn__inicio nav-link " 
+          type="button" routerLink="autenticarse" routerLinkActive="active"
+          (click)="Ocultarbarra()">Iniciar sesion</button>
+        </form>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>  
+</div>

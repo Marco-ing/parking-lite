@@ -9,6 +9,7 @@ import { AutenticarseFormComponent } from './componentes/autenticarse-form/auten
 
 
 const routes: Routes = [
+  {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'uso', component: UsoComponent},
   {path: 'entrada', component: EntradaComponent},
