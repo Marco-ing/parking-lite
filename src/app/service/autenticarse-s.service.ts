@@ -21,20 +21,24 @@ export class AutenticarseSService {
   VerificarDatos(email,password){
     return this.httpClient.post<any>(this.baseURL+'Autenticarse.php',{email,password})
     .pipe(map(Users => {
-      console.log(Users[0].correo);
-      this.setToken(Users[0].correo);
+      this.setToken(Users[0].correo,Users[0].nombre);
       this.getLoggedInName.emit(true);
       return Users;
     }));
   }
-  setToken(token:string){
+  setToken(token:string,user:string){
     localStorage.setItem('token',token);
+    localStorage.setItem('user',user);
   }
   getToken(){
     return localStorage.getItem('token');
   }
+  getUser(){
+    return localStorage.getItem('user');
+  }
   deleteToken(){
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
   isLoggedIn(){
     const usertoken=this.getToken();

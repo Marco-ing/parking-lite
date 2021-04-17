@@ -16,9 +16,13 @@ export class AuthGuard implements CanActivate {
   }
   isLogin(routeurl){
     if(this.autenticarsesservice.isLoggedIn()){
-      return true;
+      this.autenticarsesservice.getLoggedInName.emit(true);
     }
-    this.autenticarsesservice.redirectUrl=routeurl;
-    this.rotue.navigate(['/autenticarse'],{queryParams: {returnUrl:routeurl}});
+    else{
+      this.autenticarsesservice.getLoggedInName.emit(false);
+    }
+    return true;
+    //this.autenticarsesservice.redirectUrl=routeurl;
+    //this.rotue.navigate(['/autenticarse'],{queryParams: {returnUrl:routeurl}});
   }
 }
