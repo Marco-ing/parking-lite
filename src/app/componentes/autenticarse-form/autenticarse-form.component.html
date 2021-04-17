@@ -20,12 +20,15 @@
                     <div class="input-group input-group-lg mt-4 mb-5">
                         <input type="text" [(ngModel)]="login.email" formControlName="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="correo" placeholder="Correo Electronico" [ngClass]="{ 'is-invalid':submitted && f.email.errors }">
                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                            <div *ngIf="f.email.errors.required">Introduce un correo electronico.</div>
+                            <div *ngIf="f.email.errors.required">Introduce tu correo electronico.</div>
                             <div *ngIf="f.email.errors.email">Ingresa un correo electronico valido.</div>
                         </div>
                     </div>
                     <div class="input-group input-group-lg mt-4 mb-2">
                         <input type="password" [(ngModel)]="login.password" formControlName="password"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="contrasenia" placeholder="Contraseña" [ngClass]="{ 'is-invalid':submitted && f.password.errors }">
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Introduce tu constraseña.</div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm">
