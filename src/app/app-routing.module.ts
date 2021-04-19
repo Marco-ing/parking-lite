@@ -7,6 +7,7 @@ import { CuentaComponent } from './componentes/cuenta/cuenta.component';
 import { EntradaComponent } from './componentes/entrada/entrada.component';
 import { AutenticarseFormComponent } from './componentes/autenticarse-form/autenticarse-form.component';
 import { AuthGuard } from './auth.guard';
+import { RegistroComponent } from './componentes/registro/registro.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,9 @@ const routes: Routes = [
   {path: 'entrada', component: EntradaComponent},
   {path: 'cuenta', component: CuentaComponent},
   {path: 'autenticarse', component: AutenticarseFormComponent},
+  {path: 'registrarse', component: RegistroComponent
+},
+
   {path: '**', pathMatch: 'full' ,redirectTo: 'home'}
 ];
 

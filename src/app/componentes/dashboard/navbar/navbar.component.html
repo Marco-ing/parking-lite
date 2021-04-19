@@ -27,7 +27,8 @@
           <button *ngIf="cerrarsesion" class="btn btn-outline-success m-2 btn__inicio nav-link " 
           type="button" routerLink="q" routerLinkActive="active"
           (click)="CerrarSesion()">Cerrar Sesión</button>
-          <button *ngIf="!registrarse" class="btn btn-outline-success m-2 btn__registro " type="submit">Hazte cliente</button>
+          <button *ngIf="!registrarse" class="btn btn-outline-success m-2 btn__registro " type="submit"
+          [routerLink]="['registrarse']" routerLinkActive="active">Hazte cliente</button>
           <button *ngIf="!autenticarse" class="btn btn-outline-success m-2 btn__inicio nav-link " 
           type="button" routerLink="autenticarse" routerLinkActive="active"
           (click)="Ocultarbarra()">Iniciar sesion</button>
