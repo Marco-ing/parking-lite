@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +13,8 @@ import { CuentaComponent } from './componentes/cuenta/cuenta.component';
 import { FooterComponent } from './componentes/dashboard/footer/footer.component';
 import { AutenticarseFormComponent } from './componentes/autenticarse-form/autenticarse-form.component';
 
+import { AutenticarseSService } from './service/autenticarse-s.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,9 +28,15 @@ import { AutenticarseFormComponent } from './componentes/autenticarse-form/auten
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    AutenticarseSService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
