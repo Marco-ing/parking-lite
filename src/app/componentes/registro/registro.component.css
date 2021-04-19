@@ -1,0 +1,19 @@
+/* 
+    Negro:  #181b32
+    Azul:   #39bdee
+    Blanco: #f2f7fa
+*/
+
+.btn_registrarse {
+  background-color: #39bdee;
+  float: right;
+  border-color: #181b32;
+  width: 145px;
+  height: 40px;
+  border: 1px solid transparent;
+}
+
+.btn_registrarse:hover {
+  background-color: #6ecdf0;
+  color: #f2f7fa;
+}

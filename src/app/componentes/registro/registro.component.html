@@ -1,30 +1,47 @@
 <div class="container col-sm-8 p-5 mb-5 text-align-center">
     <h2>Registro</h2>
-    <form [formGroup]="registrarse">
+    <form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="registrarse">
         <div class="form-group">
             <label for="nombre"></label>
-            <input class="form-control" type="text" id="nombre" placeholder="Nombre(s)">
+            <input formControlName="nombre" class="form-control" type="text" id="nombre" placeholder="Nombre(s)">
+            <span   class="form-text text-danger"
+                    *ngIf="campoEsValido('nombre')"
+                    >Ingresa tu nombre
+            </span>
         </div>
         <div class="form-group">
             <label for="apellido-paterno"></label>
-            <input class="form-control" type="text" id="apellido-paterno"placeholder="Apellido paterno">
+            <input formControlName="apellidoPaterno" class="form-control" type="text" id="apellido-paterno"placeholder="Apellido paterno">
+            <span   class="form-text text-danger" 
+                    *ngIf="campoEsValido('apellidoPaterno')"
+                    >Ingresa tu apellido paterno
+            </span>
         </div>
         <div class="form-group">
             <label for="apellido-materno"></label>
-            <input class="form-control" type="text" id="apellido-materno"placeholder="Apellido materno">
+            <input formControlName="apellidoMaterno" class="form-control" type="text" id="apellido-materno"placeholder="Apellido materno">
+            <span   class="form-text text-danger" 
+                    *ngIf="campoEsValido('apellidoMaterno')"
+                    >Ingresa tu apellido materno
+            </span>
         </div>
         <div class="form-group">
             <label for="correo"></label>
-            <input class="form-control" type="email" id="correo"placeholder="Correo">
+            <input formControlName="correo" class="form-control" type="email" id="correo"placeholder="Correo">
+            <span   class="form-text text-danger"
+                    *ngIf="campoEsValido('correo')"
+                    >Ingrese un correo valido
+            </span>
         </div>
         <div class="form-group">
-            <label for="password"></label>
-            <input class="form-control" type="password" id="password" placeholder="Contraseña">
+            <label  for="password"></label>
+            <input  formControlName="password" class="form-control" type="password" id="password" placeholder="Contraseña">
+            <span   class="form-text text-danger"
+                    *ngIf="campoEsValido('password')"
+                    >Ingresa una contraseña valida (mínimo 6 caracteres)
+            </span>
         </div>
-        <div>
-            <button  class="btn btn-secondary btn__registro mt-4" type="submit">Registrarse</button>
+            <div class="col-12">
+            <button  class="btn_registrarse mt-4" type="submit">Registrarse</button>
         </div>
     </form>
-    <div class="alert alert alert-danger mt-5" role="alert">
-        Por favor llena todos los campos!
-    </div>
