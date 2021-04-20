@@ -1,5 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { AutenticarseSService } from 'src/app/service/autenticarse-s.service';
+import { OcultarBarraService } from 'src/app/service/ocultar-barra.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,7 +15,7 @@ export class NavbarComponent implements OnInit {
   public user:Boolean;
   public nombre:string;
 
-  constructor(private servicio:AutenticarseSService, private zone: NgZone) { }
+  constructor(private servicio:AutenticarseSService, private zone: NgZone, private ocultar:OcultarBarraService) { }
 
   ngOnInit(): void {
     this.servicio.getLoggedInName.subscribe(data =>{
@@ -34,11 +35,13 @@ export class NavbarComponent implements OnInit {
       }
       this.MostrarBarra=false;
     })
+    this.ocultar.login.subscribe(data=>{
+      if(data){
+        this.MostrarBarra=true;
+      }
+    });
   }
 
-  Ocultarbarra(): void{
-    this.MostrarBarra=true;
-  }
   CerrarSesion(){
     this.servicio.deleteToken();
     this.zone.runOutsideAngular(() => {

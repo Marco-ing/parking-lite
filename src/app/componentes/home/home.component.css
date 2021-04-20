@@ -1,9 +1,9 @@
 
 .pelicula-principal{
   font-size: 16px;
-  min-height: 40.62em;
-  color: #FFF;
-  background: linear-gradient(rgba(0,0,0,.50) 0%, rgba(0,0,0,.50) 100%), url(../../../assets/imagenes/dashboard2.jpg);
+  /*min-height: 40.62em;*/
+  color: #f2f7fa;
+  /*background: linear-gradient(rgba(0,0,0,.50) 0%, rgba(0,0,0,.50) 100%), url(../../../assets/imagenes/dashboard2.jpg);*/
   background-position: center center;
   background-size: cover;
   margin-bottom: 3.12em;
@@ -15,35 +15,33 @@
   margin-bottom: 100px;
 }
 .div__descripcion h1{
-  color: #f8a488;
+  color: #181b32;
 }
 .div__descripcion p{
   font-size: 20px;
+  color: #39bdee;
 }
 
 .card__img{
   border-radius:20px;
 }
 .h3__servicios{
-  color: #f8a488;
+  color: #181b32;
   margin-bottom: 20px;
 }
 .titulos__servicios{
-  color: #5aa897;
+  color: #39bdee;
 }
 
 .p__servicios{
-  color:#45526c;
+  color:#181b32;
 }
 
 .div__invitacion{
-  background-color: #5aa897;
+  background-color: #39bdee;
   border-radius: 25px;
   margin-top:40px;
   margin-bottom: 40px;
-}
-.div_img{
-
 }
 .div_img img{
   width: 100%;
@@ -56,25 +54,25 @@
   margin: 100px;
 }
 .div__descripcion-invitacion h3{
-  color: #fff;
+  color: #f2f7fa;
   font-size: 35px;
   font-weight: bold;
 }
 .div__descripcion-invitacion p{
-  color: #fff;
+  color: #f2f7fa;
   font-size: 20px;
 }
 .div__descripcion-invitacion a{
-  background-color: #f8f5f1;
+  background-color: #f2f7fa;
   border-radius: 10px;
   border: none;
-  color: #f8a488;
+  color: #181b32;
   font-size: 20px;
 }
 .div__descripcion-invitacion a:hover{
-  background-color: #f8a488;
+  background-color: #181b32;
   border-radius: 10px;
   border: none;
-  color: #fff;
+  color: #f2f7fa;
   font-size: 20px;
 }
