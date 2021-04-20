@@ -8,6 +8,7 @@ import { EntradaComponent } from './componentes/entrada/entrada.component';
 import { AutenticarseFormComponent } from './componentes/autenticarse-form/autenticarse-form.component';
 import { AuthGuard } from './guard/auth.guard';
 import { AutenticarseGuard } from './guard/autenticarse.guard';
+import { MembresiaComponent } from './componentes/membresia/membresia.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'entrada', component: EntradaComponent},
   {path: 'cuenta', component: CuentaComponent},
   {path: 'autenticarse', component: AutenticarseFormComponent, canActivate: [AutenticarseGuard]},
+  {path: 'membresia', component: MembresiaComponent},
   {path: '**', pathMatch: 'full' ,redirectTo: 'home'}
 ];
 
