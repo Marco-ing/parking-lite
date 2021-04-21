@@ -1,0 +1,14 @@
+
+button {
+    padding: .375rem .75rem;
+    border: 1px solid #007bff;
+    border-radius: .25rem;
+    color: #007bff;
+    transition: color .15s ease-in-out,
+      background-color .15s ease-in-out;
+  }
+  
+  button:hover, button:active, button:focus {
+    color: #fff;
+    background-color: #007bff;
+  }
