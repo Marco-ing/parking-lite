@@ -2,6 +2,9 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import {NgbCalendar, NgbDatepickerI18n, NgbDateStruct,} from '@ng-bootstrap/ng-bootstrap';
 import { first } from 'rxjs/operators';
 import { MembresiaService } from 'src/app/service/membresia.service';
+import { FormsModule, FormGroup, FormBuilder, Validators, NgForm, ReactiveFormsModule} from '@angular/forms';
+
+
 const meses={
   days:['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo'],
   months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
@@ -50,8 +53,16 @@ export class MembresiaComponent implements OnInit {
   date: {year: number, month: number};
   hoy:{year: number, month: number, day: number};
   total:number;
+  tarjeta:FormGroup;
+  submitted = false;
+  tardat={
+    titular:null,
+    numero:null,
+    expira:null,
+    cvv:null
+  }
 
-  constructor(private calendar: NgbCalendar,private service:MembresiaService) {
+  constructor(private calendar: NgbCalendar,private service:MembresiaService,private formbuilder:FormBuilder) {
     this.hoy=this.calendar.getNext(this.calendar.getToday(),'d',1);
     this.service.getTarifa()
     .pipe(first())
@@ -64,8 +75,28 @@ export class MembresiaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tarjeta=this.formbuilder.group({
+      titular:['',Validators.required],
+      numero:['',[Validators.required,Validators.minLength(16)]],
+      expira:['',Validators.required],
+      cvv:['',Validators.required,Validators.minLength(3),Validators.maxLength(3)]
+    });
   }
   
+  get f() {return this.tarjeta.controls;}
+
+  AutenticarTarjeta(){
+    this.submitted=true;
+    if(this.tarjeta.invalid){
+      return;
+    }
+    this.Autenticar_Tarjeta(this.tarjeta);
+  }
+
+  Autenticar_Tarjeta(tarjeta){
+
+  }
+
   onDateSelect($event){
     this.inicio=meses['days'][this.calendar.getWeekday($event)-1]+" "+$event.day+" de "+meses['months'][$event.month-1]+" del "+$event.year;
     this.final=meses['days'][this.calendar.getWeekday(this.calendar.getNext($event,'d',29))-1]+" "+this.calendar.getNext($event,'d',29).day+" de "+meses['months'][this.calendar.getNext($event,'d',29).month-1]+" del "+this.calendar.getNext($event,'d',29).year;
