@@ -15,6 +15,8 @@ import { AutenticarseFormComponent } from './componentes/autenticarse-form/auten
 
 import { AutenticarseSService } from './service/autenticarse-s.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReservacionComponent } from './componentes/reservacion/reservacion.component';
+import { ReservarService } from './service/reservar.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EntradaComponent,
     CuentaComponent,
     FooterComponent,
-    AutenticarseFormComponent
+    AutenticarseFormComponent,
+    ReservacionComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule
   ],
   providers: [
-    AutenticarseSService
+    AutenticarseSService,
+    ReservarService
   ],
   bootstrap: [AppComponent]
 })

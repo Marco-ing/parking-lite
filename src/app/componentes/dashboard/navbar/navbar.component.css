@@ -1,5 +1,5 @@
 .contenido__nav{
-  background-color: #000;
+  background-color: #39bdee;
   
 }
 .caja__nav{
@@ -7,19 +7,19 @@
 }
 .btn__registro{
   background-color: transparent;
-  color: #fff;
-  border-color: #fff;
+  color:#f2f7fa;
+  border-color: #f2f7fa;
 }
 .btn__registro:hover{
-  background-color:rgb(96, 97, 97)
+  background-color:rgb(208, 233, 243);
 }
 .btn__inicio{
-  background-color: #f8a488;
-  color: #000;
+  background-color: #181b32;
+  color: #f2f7fa;
   border-color: rgb(96, 97, 97);
 }
 .btn__inicio:hover{
-  background-color: #fa926f;
-  color: #000;
+  background-color: rgb(208, 233, 243);
+  color: #f2f7fa;
   border-color: rgb(96, 97, 97);
 }

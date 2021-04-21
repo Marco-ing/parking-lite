@@ -49,11 +49,16 @@ export class AutenticarseFormComponent implements OnInit {
     .pipe(first())
     .subscribe(
       data =>{
-        const redirect=this.AutenticarseSService.redirectUrl ? this.AutenticarseSService.redirectUrl: '/home';
-        this.router.navigate([redirect]);
+        if(data[0].contrasenia==""){
+          alert("Contraseña incorrecta.");
+        }
+        else{
+          const redirect=this.AutenticarseSService.redirectUrl ? this.AutenticarseSService.redirectUrl: '/home';
+          this.router.navigate([redirect]);
+        }
       },
       error => {
-        alert("Usurio no registrado.");
+        alert("Usuario no registrado.");
       }
     );
   }

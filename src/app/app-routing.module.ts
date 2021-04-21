@@ -6,7 +6,9 @@ import { UsoComponent } from './componentes/uso/uso.component';
 import { CuentaComponent } from './componentes/cuenta/cuenta.component';
 import { EntradaComponent } from './componentes/entrada/entrada.component';
 import { AutenticarseFormComponent } from './componentes/autenticarse-form/autenticarse-form.component';
-import { AuthGuard } from './auth.guard';
+import { ReservacionComponent} from './componentes/reservacion/reservacion.component';
+import { AuthGuard } from './guard/auth.guard';
+import { AutenticarseGuard } from './guard/autenticarse.guard';
 
 
 const routes: Routes = [
@@ -14,7 +16,8 @@ const routes: Routes = [
   {path: 'uso', component: UsoComponent},
   {path: 'entrada', component: EntradaComponent},
   {path: 'cuenta', component: CuentaComponent},
-  {path: 'autenticarse', component: AutenticarseFormComponent},
+  {path: 'autenticarse', component: AutenticarseFormComponent, canActivate: [AutenticarseGuard]},
+  {path: 'reservar', component: ReservacionComponent},
   {path: '**', pathMatch: 'full' ,redirectTo: 'home'}
 ];
 

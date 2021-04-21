@@ -2,7 +2,7 @@ import { Injectable,Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
-import { Users } from '../Users';
+import { Users } from '../Clases/Users';
 
 
 @Injectable({
@@ -11,8 +11,8 @@ import { Users } from '../Users';
 export class AutenticarseSService {
 
   redirectUrl:string;
-  URL='http://localhost/parking-lite/PHP/';
-  baseURL:string='http://localhost/parking-lite/PHP/';
+  URL='http://localhost/ParkingWeb/';
+  baseURL:string='http://localhost/ParkingWeb/';
 
   @Output() getLoggedInName: EventEmitter<any>=new EventEmitter();
 
@@ -21,14 +21,15 @@ export class AutenticarseSService {
   VerificarDatos(email,password){
     return this.httpClient.post<any>(this.baseURL+'Autenticarse.php',{email,password})
     .pipe(map(Users => {
-      this.setToken(Users[0].correo,Users[0].nombre);
+    this.setToken(Users[0].correo,Users[0].nombre,Users[0].idsocio);
       this.getLoggedInName.emit(true);
       return Users;
     }));
   }
-  setToken(token:string,user:string){
+  setToken(token:string,user:string,socio:string){
     localStorage.setItem('token',token);
     localStorage.setItem('user',user);
+    localStorage.setItem('socio',socio);
   }
   getToken(){
     return localStorage.getItem('token');
@@ -36,9 +37,13 @@ export class AutenticarseSService {
   getUser(){
     return localStorage.getItem('user');
   }
+  getSocio(){
+    return localStorage.getItem('socio');
+  }
   deleteToken(){
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('socio');
   }
   isLoggedIn(){
     const usertoken=this.getToken();

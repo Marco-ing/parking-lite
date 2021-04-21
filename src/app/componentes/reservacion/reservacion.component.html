@@ -1,0 +1,72 @@
+<div class="container principal">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-1">
+            <a class="navbar-brand" href="#">
+              <img src="../../../assets/imagenes/" alt="" width="50" height="44">
+            </a>
+          </div>
+          <div class="col-11">
+            <h1 class="h2__titulo">Reservar</h1>
+          </div>
+    
+        </div>
+    
+          <div class="reservacion">
+            <form [formGroup]="reservar" (ngSubmit)="Valida()">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label" >Fecha de inicio</label>
+                <input type="date" [(ngModel)]="reser.finicio" formControlName="finicio" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label" >Fecha final</label>
+                <input type="date" [(ngModel)]="reser.ffinal" formControlName="ffinal" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label" >Hora de inicio</label>
+                <input type="time" [(ngModel)]="reser.hinicio" formControlName="hinicio" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label" >Hora de salida</label>
+                <input type="time" [(ngModel)]="reser.hfinal" formControlName="hfinal" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <select class="form-select form-select-sm select__metodo" aria-label=".form-select-sm example">
+                <option selected>Metodo de pago</option>
+                <option value="1">Tarjeta</option>
+                <option value="2">Efectivo</option>
+    
+              </select>
+    
+    
+              <p class="text-center m-4 p__total" id="totalstring"></p>
+              <div class="row">
+                <div class="col-6">
+                  <button class="btn btn-danger button_impro">Cancelar</button>
+                </div>
+                <div class="col-6">
+                  <button type="submit" class="btn btn-primary button_impro">Reservar</button>
+                </div>
+              </div>
+    
+    
+            </form>
+    
+          </div>
+      </div>
+      <div class="col-md-4" style="margin-top:200px">
+    
+    
+        <div class="card tarifas" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Tarifa Actual</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Por 1 Hora y fraccion.</h6>
+            <p class="card-text">     $25   </p>
+            <a href="#" class="card-link">Consulta nuestras tarifas aqui</a>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    

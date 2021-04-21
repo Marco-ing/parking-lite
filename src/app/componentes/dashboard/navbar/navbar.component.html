@@ -21,7 +21,7 @@
         <form class="d-flex">
           <ul class="navbar-nav me-auto mt-2 mb-lg-0">
             <li class="nav-item">
-              <a *ngIf="user" class="nav-link" aria-current="page" [routerLink]="" routerLinkActive="active">{{nombre}}</a>
+              <a *ngIf="user" class="nav-link" aria-current="page" [routerLink]="['reservar']" routerLinkActive="active">{{nombre}}</a>
             </li>
           </ul>
           <button *ngIf="cerrarsesion" class="btn btn-outline-success m-2 btn__inicio nav-link " 
@@ -29,8 +29,7 @@
           (click)="CerrarSesion()">Cerrar Sesión</button>
           <button *ngIf="!registrarse" class="btn btn-outline-success m-2 btn__registro " type="submit">Hazte cliente</button>
           <button *ngIf="!autenticarse" class="btn btn-outline-success m-2 btn__inicio nav-link " 
-          type="button" routerLink="autenticarse" routerLinkActive="active"
-          (click)="Ocultarbarra()">Iniciar sesion</button>
+          type="button" routerLink="autenticarse" routerLinkActive="active">Iniciar sesion</button>
         </form>
       </div>
     </div>
