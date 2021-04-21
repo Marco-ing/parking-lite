@@ -9,8 +9,6 @@ import { AutenticarseFormComponent } from './componentes/autenticarse-form/auten
 import { AuthGuard } from './guard/auth.guard';
 import { AutenticarseGuard } from './guard/autenticarse.guard';
 import { MembresiaComponent } from './componentes/membresia/membresia.component';
-import { EditarperfilComponent } from './componentes/editarperfil/editarperfil.component';
-
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
@@ -19,7 +17,6 @@ const routes: Routes = [
   {path: 'cuenta', component: CuentaComponent},
   {path: 'autenticarse', component: AutenticarseFormComponent, canActivate: [AutenticarseGuard]},
   {path: 'membresia', component: MembresiaComponent},
-  {path: 'editar-perfil', component:EditarperfilComponent},
   {path: '**', pathMatch: 'full' ,redirectTo: 'home'}
 ];
 
