@@ -13,17 +13,38 @@
             <p>Inicio de tu membresia: {{inicio}}</p>
             <p>Final de tu membresia: {{final}}</p>
             <p>Total: ${{total}}</p>
-            <form>
-                <input type="text"><br>
-                <input type="text">
-                <div class="row">
-                    <div class="col-sm">
-                        <input type="date">
-                    </div>
-                    <div class="col-sm">
-                        <input type="text">
+            <form [formGroup]="tarjeta">
+                <div class="input-group input-group-lg">
+                    <input type="text" [(ngModel)]="tardat.titular" formControlName="titular" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="titular" placeholder="Titular de la tarjeta" [ngClass]="{ 'is-invalid':submitted && f.titular.errors }">
+                    <div *ngIf="submitted && f.titular.errors" class="invalid-feedback">
+                        <div *ngIf="f.titular.errors.required">Introduce tu correo electronico.</div>
                     </div>
                 </div>
+                <div class="input-group input-group-lg">
+                    <input type="text" [(ngModel)]="tardat.numero" formControlName="numero" 
+                    class="form-control " aria-label="Sizing example input"  maxlength="16"
+                    aria-describedby="inputGroup-sizing-lg" id="numero" placeholder="Numero de la tarjeta" 
+                    [ngClass]="{ 'is-invalid':submitted && f.numero.errors }" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
+                    <div *ngIf="submitted && f.numero.errors" class="invalid-feedback">
+                        <div *ngIf="f.numero.errors.required">Introduce tu numero de tarjeta.</div>
+                        <div *ngIf="f.numero.errors.minlength">Introduce un numero de tarjeta válido.</div>
+                    </div>
+                </div>
+                <div class="input-group input-group-lg">
+                    <div class="row">
+                        <div class="col-sm">
+                            <input type="date" [(ngModel)]="tardat.expira" formControlName="expira" 
+                            class="form-control " aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-lg" id="expira">
+                        </div>
+                        <div class="col-sm">
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <button type="submit" class="btn btn-primary btn-lg" (click)="AutenticarTarjeta()">Comprar</button>
             </form>
         </div>
     </div>    
