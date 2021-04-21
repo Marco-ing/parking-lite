@@ -4,7 +4,7 @@ import {AutenticarseSService} from '../../service/autenticarse-s.service';
 import { FormsModule, FormGroup, FormBuilder, Validators, NgForm, ReactiveFormsModule} from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
-//declare var ventana4:any;
+
 
 @Component({
   selector: 'app-autenticarse-form',
