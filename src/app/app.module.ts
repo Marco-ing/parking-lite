@@ -17,6 +17,7 @@ import { AutenticarseSService } from './service/autenticarse-s.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MembresiaComponent } from './componentes/membresia/membresia.component';
 import { EditarperfilComponent } from './componentes/editarperfil/editarperfil.component';
+import { ReservacionesComponent } from './componentes/reservaciones/reservaciones.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { EditarperfilComponent } from './componentes/editarperfil/editarperfil.c
     FooterComponent,
     AutenticarseFormComponent,
     MembresiaComponent,
-    EditarperfilComponent
+    EditarperfilComponent,
+    ReservacionesComponent
   ],
   imports: [
     BrowserModule,

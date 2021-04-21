@@ -6,8 +6,9 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MembresiaService {
-
-  baseURL:string='http://localhost/parking-lite/PHP/';
+  //Ruteo de servidor Marco
+  baseURL:string='http://localhost:81/parking-lite/PHP/';
+  //baseURL:string='http://localhost/parking-lite/PHP/';
 
   constructor(private http:HttpClient) { }
 

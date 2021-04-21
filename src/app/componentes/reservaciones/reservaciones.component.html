@@ -1,0 +1,32 @@
+<div class="container m-6 container-tabla">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center m-4">Cancelar Reservaci&oacute;n</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Fecha</th>
+
+            <th scope="col">Hora</th>
+            <th scope="col">Lugar</th>
+            <th scope="col">Cuenta</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let res of reservaciones">
+            <th scope="row"> {{res.IdReservacion}} </th>
+            <td>{{res.FechaInicio}} - {{res.FechaFinal}}</td>
+            <td> Hrs </td>
+            <td> {{res.IdEstacionamientoSocio}} </td>
+            <td>{{res.Monto}}</td>
+            <td><button class="btn btn-danger" (click)="eliminar(res.IdReservacion,res.IdEstacionamientoSocio)">X</button></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
