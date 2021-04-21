@@ -39,5 +39,8 @@ export class ReservacionesComponent implements OnInit {
     }
 
   }
+  obtenerHora(fecha_hora){
+    return fecha_hora.substring(10,19);
+  }
 
 }

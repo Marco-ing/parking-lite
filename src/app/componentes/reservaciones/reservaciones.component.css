@@ -1,3 +1,7 @@
 .container-tabla{
   min-height: 800px;
 }
+.tabla_reservaciones{
+  background-color: #fff;
+  border: 3px #181b32 solid;
+}

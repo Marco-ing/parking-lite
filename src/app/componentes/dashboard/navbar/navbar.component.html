@@ -9,14 +9,20 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" aria-current="page" [routerLink]="['uso']" routerLinkActive="active">Modode Uso</a>
-          </li> 
+          </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['entrada']" routerLinkActive="active">Registrar Entrada</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['cuenta']" routerLinkActive="active">Pagar Cuenta</a>
           </li>
-  
+                    <!-- Navegacion sobre Mis reservaciones/cancelar reservacion -->
+            <li class="nav-item" *ngIf="autenticarse">
+                <a class="nav-link" [routerLink]="['reservaciones']" routerLinkActive="active">Mis Reservaciones</a>
+            </li>
+
+                    <!-- Navegacion sobre mis reservaciones/cancelar reservacion-->
+
         </ul>
         <form class="d-flex">
           <ul class="navbar-nav me-auto mt-2 mb-lg-0">
@@ -24,14 +30,14 @@
               <a *ngIf="user" class="nav-link" aria-current="page" [routerLink]="" routerLinkActive="active">{{nombre}}</a>
             </li>
           </ul>
-          <button *ngIf="cerrarsesion" class="btn btn-outline-success m-2 btn__inicio nav-link " 
+          <button *ngIf="cerrarsesion" class="btn btn-outline-success m-2 btn__inicio nav-link "
           type="button" routerLink="q" routerLinkActive="active"
           (click)="CerrarSesion()">Cerrar Sesión</button>
           <button *ngIf="!registrarse" class="btn btn-outline-success m-2 btn__registro " type="submit">Hazte cliente</button>
-          <button *ngIf="!autenticarse" class="btn btn-outline-success m-2 btn__inicio nav-link " 
+          <button *ngIf="!autenticarse" class="btn btn-outline-success m-2 btn__inicio nav-link "
           type="button" routerLink="autenticarse" routerLinkActive="active">Iniciar sesion</button>
         </form>
       </div>
     </div>
-  </nav>  
+  </nav>
 </div>
