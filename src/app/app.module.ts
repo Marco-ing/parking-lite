@@ -16,6 +16,7 @@ import { AutenticarseFormComponent } from './componentes/autenticarse-form/auten
 import { AutenticarseSService } from './service/autenticarse-s.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MembresiaComponent } from './componentes/membresia/membresia.component';
+import { EditarperfilComponent } from './componentes/editarperfil/editarperfil.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { MembresiaComponent } from './componentes/membresia/membresia.component'
     CuentaComponent,
     FooterComponent,
     AutenticarseFormComponent,
-    MembresiaComponent
+    MembresiaComponent,
+    EditarperfilComponent
   ],
   imports: [
     BrowserModule,
