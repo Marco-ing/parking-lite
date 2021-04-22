@@ -164,7 +164,6 @@ export class MembresiaComponent implements OnInit {
       }
     }
   }
-<<<<<<< HEAD
   valnom($event){
     return (($event.charCode >= 65 && $event.charCode <= 90)||($event.charCode >= 97 && $event.charCode <= 122)||($event.charCode == 193)||($event.charCode == 201)||($event.charCode == 205)||($event.charCode == 211)||($event.charCode == 218)||($event.charCode == 225)||($event.charCode == 233)||($event.charCode == 237)||($event.charCode == 243)||($event.charCode == 250)||($event.charCode == 32))
   }
@@ -172,6 +171,3 @@ export class MembresiaComponent implements OnInit {
     return ($event.charCode >= 48 && $event.charCode <= 57);
   }
 }
-=======
-}
->>>>>>> eb7536e44889c1952d37142fa318ba50ab4878ce
