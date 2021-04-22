@@ -11,7 +11,7 @@ export class ReservarService {
 
   redirectUrl:string;
   URL='http://localhost/ParkingWeb/';
-  baseURL:string='http://localhost/ParkingWeb/';
+  baseURL:string='http://localhost/parking-lie/PHP/';
 
   constructor(private http: HttpClient,private httpClient: HttpClient) { }
 

@@ -1,8 +1,9 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import {NgbCalendar, NgbDatepickerI18n, NgbDateStruct,} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCalendar, NgbDate, NgbDatepickerI18n, NgbDateStruct,} from '@ng-bootstrap/ng-bootstrap';
 import { first } from 'rxjs/operators';
 import { MembresiaService } from 'src/app/service/membresia.service';
 import { FormsModule, FormGroup, FormBuilder, Validators, NgForm, ReactiveFormsModule} from '@angular/forms';
+import { Router } from '@angular/router';
 
 const meses={
   days:['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo'],
@@ -51,6 +52,7 @@ export class MembresiaComponent implements OnInit {
   final:string;
   titular:string;
   date: {year: number, month: number,day:number};
+  datef: {year: number, month: number,day:number};
   hoy:{year: number, month: number, day: number};
   total:number;
   tarjeta:FormGroup;
@@ -62,9 +64,10 @@ export class MembresiaComponent implements OnInit {
     cvv:null
   }
 
-  constructor(private calendar: NgbCalendar,private service:MembresiaService,private formbuilder:FormBuilder) {
+  constructor(private calendar: NgbCalendar,private service:MembresiaService,private formbuilder:FormBuilder,private router:Router) {
     this.hoy=this.calendar.getNext(this.calendar.getToday(),'d',1);
     this.date=this.calendar.getNext(this.calendar.getToday(),'d',1);
+    this.datef=this.calendar.getNext(this.calendar.getToday(),'d',1);
     this.service.getTarifa()
     .pipe(first())
     .subscribe(data=>{
@@ -111,10 +114,12 @@ export class MembresiaComponent implements OnInit {
   Autenticar_Tarjeta(tarjeta){
     var user=JSON.parse(localStorage.getItem('token'));
     var id=user.idusuario;
-    this.service.insertMem(id,this.date,this.total)
+    this.service.insertMem(id,this.date,this.datef,this.total)
     .pipe(first())
     .subscribe(data=>{
-      console.log(data.idmembresia);
+      alert("Membresia adquirida.\nId de membresia: "+data[0][0]+"\nCajon de estacionamiento: "+data[0][1]+"\nFecha de inicio: "+this.inicio+"\nFecha de vencimiento: "+this.final);
+      const redirect=this.service.redirectUrl ? this.service.redirectUrl: '/home';
+      this.router.navigate([redirect]);
     },
     error=>{
       alert("No hay lugares disponibles para tu membresía.");
@@ -123,7 +128,7 @@ export class MembresiaComponent implements OnInit {
 
   onDateSelect($event){
     this.date=this.calendar.getNext($event,'d',0);
-    console.log(this.date);
+    this.datef=this.calendar.getNext($event,'d',0);
     this.inicio=meses['days'][this.calendar.getWeekday($event)-1]+" "+$event.day+" de "+meses['months'][$event.month-1]+" del "+$event.year;
     this.final=meses['days'][this.calendar.getWeekday(this.calendar.getNext($event,'d',29))-1]+" "+this.calendar.getNext($event,'d',29).day+" de "+meses['months'][this.calendar.getNext($event,'d',29).month-1]+" del "+this.calendar.getNext($event,'d',29).year;
   }

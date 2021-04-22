@@ -14,6 +14,7 @@ export class MembresiaService {
   URL='http://localhost/parking-lite/PHP/';
   baseURL:string='http://localhost/parking-lite/PHP/';
 
+  redirectUrl:string;
   constructor(private http:HttpClient) { }
 
   getTarifa(){
@@ -23,8 +24,14 @@ export class MembresiaService {
     }));
   }
 
-  insertMem(id,fechainicio,monto){
-    return this.http.post<any>(this.baseURL+"InsertarMembresia.php",{id,fechainicio,monto})
+  insertMem(id,fechainicio,fechafinal,monto){
+    var dia=fechainicio.day;
+    var mes=fechainicio.month;
+    var anio=fechainicio.year;
+    var diaf=fechafinal.day;
+    var mesf=fechafinal.month;
+    var aniof=fechafinal.year;
+    return this.http.post<any>(this.baseURL+"InsertarMembresia.php",{id,anio,mes,dia,monto,diaf,mesf,aniof})
     .pipe(map(data=>{
       return data;
     }));
