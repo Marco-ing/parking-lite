@@ -17,7 +17,8 @@ export class ReservacionesComponent implements OnInit {
     // console.log(this.reservaciones);
   }
   mostrarTodos(){
-    this.reservacionesServicio.mostrarTodos(this.autenticarse.getToken()).subscribe( result => {//
+    var a=JSON.parse(this.autenticarse.getToken());
+    this.reservacionesServicio.mostrarTodos(a.correo).subscribe( result => {//
     this.reservaciones = result;// puede que falle
 
     });
