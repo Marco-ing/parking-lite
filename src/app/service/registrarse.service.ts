@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Users } from '../Users';
+import { Users } from '../Clases/Users';
 
 
 @Injectable({
@@ -19,8 +19,9 @@ export class RegistrarseService {
   }
 
   //Se envia solicitud post para registrar un nuevo usuario, se envia al usuario 
-  registrarse(usuario:Users){
+  alta(usuario:Users){
     return this.http.post('${this.url}registrar.php',JSON.stringify(usuario));
   }
+
 
 }

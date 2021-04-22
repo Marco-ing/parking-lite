@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegistrarseService } from 'src/app/service/registrarse.service';
 import { HttpClient } from '@angular/common/http';
-import { Users } from '../../Users';
+import { Users } from 'src/app/Clases/Users';
+
 import { stringify } from '@angular/compiler/src/util';
 
 @Component({
@@ -18,6 +19,7 @@ export class RegistroComponent implements OnInit {
   constructor(private registroServicio: RegistrarseService ,private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    
   }
   
 
@@ -60,7 +62,9 @@ export class RegistroComponent implements OnInit {
     console.log(this.Usuario);
   }
 
-  verificarCorreo(correo:string):boolean{
-    this.registroServicio.verificarCorreo(correo).subscribe(result => )
+  alta(){
+    
   }
+
+ 
 }

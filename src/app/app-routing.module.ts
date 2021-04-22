@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'autenticarse', component: AutenticarseFormComponent, canActivate: [AutenticarseGuard]},
   {path: 'membresia', component: MembresiaComponent},
   {path: 'editar-perfil', component: EditarperfilComponent},
-  {path: 'registrarse', component: RegistroComponent
+  {path: 'registrarse', component: RegistroComponent},
   {path: '**', pathMatch: 'full' ,redirectTo: 'home'}
 ];
 
