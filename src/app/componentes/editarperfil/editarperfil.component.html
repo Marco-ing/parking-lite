@@ -1,8 +1,88 @@
-<div class="container col-sm-8 p-5 mb-5 text-align-center">
-    <h2>Registro</h2>
-    <div class="container d-sm-flex">
-       <div class="col-6">
-        
-       </div>
-
+<div class="container-fluid mt-4 mb-5">
+    <div class="row mx-5">
+        <div class="col-sm mt-5 mx-1">
+            <div class="row mb-5">
+                <p class="mb-4"></p>
+            </div>
+            <div class="row m-5">
+                <img src="assets/imagenes/perfil.jpg" alt="perfil" class="img-thumbnail">
+            </div>
+            
+        </div>
+        <div class="col-sm mr-5">
+            <div class="row">
+                <h4 class="display-3 text-center mb-4">Mi Perfil</h4>
+            </div>
+            <div class="row border border-2 rounded-3 d-sm-flex">
+                <form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="perfil">
+                    <div class="form-group">
+                        <label for="nombre"></label>
+                        <input formControlName="nombre" class="form-control" type="text" id="nombre" placeholder="Nombre(s)">
+                        <span   class="form-text text-danger"
+                                *ngIf="campoEsValido('nombre')"
+                                >Ingresa tu nombre
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido-paterno"></label>
+                        <input formControlName="apellidoPaterno" class="form-control" type="text" id="apellido-paterno"placeholder="Apellido paterno">
+                        <span   class="form-text text-danger" 
+                                *ngIf="campoEsValido('apellidoPaterno')"
+                                >Ingresa tu apellido paterno
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido-materno"></label>
+                        <input formControlName="apellidoMaterno" class="form-control" type="text" id="apellido-materno"placeholder="Apellido materno">
+                        <span   class="form-text text-danger" 
+                                *ngIf="campoEsValido('apellidoMaterno')"
+                                >Ingresa tu apellido materno
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="correo"></label>
+                        <input formControlName="correo" class="form-control" type="email" id="correo"placeholder="Correo">
+                        <span   class="form-text text-danger"
+                                *ngIf="campoEsValido('correo')"
+                                >Ingrese un correo valido
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label  for="password"></label>
+                        <input  formControlName="password" class="form-control" type="password" id="password" placeholder="Contraseña">
+                        <span   class="form-text text-danger"
+                                *ngIf="campoEsValido('password')"
+                                >Ingresa una contraseña válida (mínimo 6 caracteres)
+                        </span>
+                    </div>
+                    <!--NUMERO TARJETA-->
+                    <div class="form-group">
+                        <label  for="numeroTarjeta"></label>
+                        <input  formControlName="numeroTarjeta" class="form-control" type="text" id="numeroTarjeta" placeholder="Número de Tarjeta">
+                        <span   class="form-text text-danger"
+                                *ngIf="campoEsValido('numeroTarjeta')"
+                                >Ingresa una tarjeta valida
+                        </span>
+                    </div>
+                    <!--TITULAR TARJETA-->
+                    <div class="form-group">
+                        <label  for="titularTarjeta"></label>
+                        <input  formControlName="titularTarjeta" class="form-control" type="text" id="titularTarjeta" placeholder="Titular de la Tarjeta">
+                        <span   class="form-text text-danger"
+                                *ngIf="campoEsValido('titularTarjeta')"
+                                >Ingresa el titular de la tarjeta
+                        </span>
+                    </div>
+                    <div class="container d-flex">
+                        <div>
+                            <button  class="btn_registrarse mt-4" type="submit">Modificar</button>
+                        </div>
+                        <div>
+                            <button  class=" mt-4" type="submit">Eliminar Cuenta</button>
+                        </div>
+                    </div>
+                </form>    
+            </div>
+        </div>
     </div>
+</div>
