@@ -47,37 +47,56 @@
                         $calculo += (15*$interval->h);
                     }
 
-                    $registros = mysqli_query($conexion, "INSERT INTO `reservacion`(`FechaInicio`,`FechaFinal`,`Monto`,`IdSocio`) 
-                    VALUES('$iniciofinal','$final','$calculo','$params->socio' )");  
-                    
-                    $datos = true;
+                    $lugar = getLugares($iniciofinal,$final,$conexion);
+
+                    if($registros = mysqli_query($conexion, "INSERT INTO `reservacion`(`FechaInicio`,`FechaFinal`,`Monto`,`IdSocio`,`idestacionamientosocio`) 
+                    VALUES('$iniciofinal','$final','$calculo','$params->socio','$lugar[0]')"))  {
+                        $datos = true;
+                    }else{
+                        $datos = false;
+                    }
                 }
             }
         }
-
-        
-        /*$intevalofechas = $fechafinal->diff($fechainicio);
-
-        if($intevalofechas->d > 0){
-            $calculo = (24*25*$intevalofechas->d);
-        }
-
-        $horaInicio = new datetime($params->hinicio);
-        $horaTermino = new datetime($params->hfinal);
-
-        $interval = $horaInicio->diff($horaTermino);
-        if($interval->i > 0){
-            $calculo += (25*($interval->h+1));
-        }
-        else{
-            $calculo += (25*$interval->h);
-        }
-
-        $registros = mysqli_query($conexion, "INSERT INTO `reservacion`(`FechaInicio`,`FechaFinal`,`Monto`,`IdSocio`) 
-        VALUES('$iniciofinal','$final','$calculo','$params->socio' )");  
-        
-        $datos = true;*/
-
         echo $datos;
+    }
+
+    function getLugares($inicio,$fin,$conect){
+        $espacios = [];
+        $test = [];
+        $place = 0;
+        $query = "SELECT idestacionamientosocio FROM reservacion where fechafinal between '$inicio' AND '$fin'";
+        $registros = mysqli_query($conect,$query);
+        while($res = mysqli_fetch_array($registros)){
+            $espacios[] = $res;
+        }
+        $query = "SELECT idestacionamientosocio FROM reservacion where fechainicio between '$inicio' AND '$fin'";
+        $registros = mysqli_query($conect,$query);
+        while($res = mysqli_fetch_array($registros)){
+            $espacios[] = $res;
+        }
+        $query = "SELECT idestacionamientosocio FROM reservacion where '$inicio' between fechainicio AND fechafinal";
+        $registros = mysqli_query($conect,$query);
+        while($res = mysqli_fetch_array($registros)){
+            $espacios[] = $res;
+        }
+        $query = "SELECT idestacionamientosocio FROM reservacion where '$fin' between fechainicio AND fechafinal";
+        $registros = mysqli_query($conect,$query);
+        while($res = mysqli_fetch_array($registros)){
+            $espacios[] = $res;
+        }
+        $query = "SELECT idestacionamientosocio from estacionamientosocio";
+        $registros = mysqli_query($conect,$query);
+        while($res = mysqli_fetch_array($registros)){
+            $test[] = $res;
+        }
+        for($i=0;$i<sizeof($test)-1;$i++){
+            if(!in_array($test[$i],$espacios)){
+                $place = $test[$i];
+                break;
+            }
+        }
+
+        return $place;
     }
 ?>
