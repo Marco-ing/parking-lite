@@ -29,7 +29,9 @@ export class RegistroComponent implements OnInit {
     apellidoPaterno : ['',Validators.required],
     apellidoMaterno : ['',Validators.required],
     correo          : ['',[Validators.required,Validators.email]],
-    password          : ['',[Validators.required]],
+    password        : ['',[Validators.required]],
+    numeroTarjeta   : ['',[Validators.required]],
+    titularTarjeta  : ['',[Validators.required]]
   })
 
   //Funcion para validar campos
@@ -50,20 +52,20 @@ export class RegistroComponent implements OnInit {
         this.registrarse.value.apellidoPaterno,
         this.registrarse.value.apellidoMaterno,
         this.registrarse.value.correo,
-        this.registrarse.value.password        
+        this.registrarse.value.password,
+        this.registrarse.value.numeroTarjeta,
+        this.registrarse.value.titularTarjeta
     );
-
-    nombre    : String = this.registrarse.value.nombre;
-    aPaterno  : String = this.registrarse.value.apellidoPaterno;
-    aMaterno  : String = this.registrarse.value.apellidoMaterno;
-    correo    : String = this.registrarse.value.correo;
-    password  : String = this.registrarse.value.password;
-    
-    console.log(this.Usuario);
+ 
+    this.alta();
   }
 
   alta(){
-    
+    this.registroServicio.alta(this.Usuario).subscribe(datos => {
+      if(datos['resultado']=='OK'){
+        alert(datos['mensaje']);
+      }
+    }); 
   }
 
  

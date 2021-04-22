@@ -41,6 +41,25 @@
                     >Ingresa una contraseña válida (mínimo 6 caracteres)
             </span>
         </div>
+        <!--NUMERO TARJETA-->
+        <div class="form-group">
+            <label  for="numeroTarjeta"></label>
+            <input  formControlName="numeroTarjeta" class="form-control" type="text" id="numeroTarjeta" placeholder="Número de Tarjeta">
+            <span   class="form-text text-danger"
+                    *ngIf="campoEsValido('numeroTarjeta')"
+                    >Ingresa una tarjeta valida
+            </span>
+        </div>
+        <!--TITULAR TARJETA-->
+        <div class="form-group">
+            <label  for="titularTarjeta"></label>
+            <input  formControlName="titularTarjeta" class="form-control" type="text" id="titularTarjeta" placeholder="Titular de la Tarjeta">
+            <span   class="form-text text-danger"
+                    *ngIf="campoEsValido('titularTarjeta')"
+                    >Ingresa el titular de la tarjeta
+            </span>
+        </div>
+        
             <div class="col-12">
             <button  class="btn_registrarse mt-4" type="submit">Registrarse</button>
         </div>
