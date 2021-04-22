@@ -123,6 +123,7 @@ export class MembresiaComponent implements OnInit {
 
   onDateSelect($event){
     this.date=this.calendar.getNext($event,'d',0);
+    console.log(this.date);
     this.inicio=meses['days'][this.calendar.getWeekday($event)-1]+" "+$event.day+" de "+meses['months'][$event.month-1]+" del "+$event.year;
     this.final=meses['days'][this.calendar.getWeekday(this.calendar.getNext($event,'d',29))-1]+" "+this.calendar.getNext($event,'d',29).day+" de "+meses['months'][this.calendar.getNext($event,'d',29).month-1]+" del "+this.calendar.getNext($event,'d',29).year;
   }

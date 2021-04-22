@@ -7,7 +7,7 @@
     require("ConexionBD.php");
     $conexion = conexion();
     
-    $registros = mysqli_query($conexion, "SELECT idusuario,nombre,apaterno,amaterno,correo,contrasenia,,numtarjeta,titulartarjeta,idsocio FROM usuario inner join socio on idusuario=idsocio where correo='$params->email'");    
+    $registros = mysqli_query($conexion, "SELECT idusuario,nombre,apaterno,amaterno,correo,contrasenia,numtarjeta,titulartarjeta FROM usuario inner join socio on idusuario=idsocio where correo='$params->email'");    
     if ($resultado = mysqli_fetch_array($registros)) {
         $datos[] = $resultado;
         if($datos[0]['contrasenia']!=$params->password){

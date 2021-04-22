@@ -5,5 +5,5 @@
     $params = json_decode($json);
     require("ConexionBD.php");
     $conexion = conexion();
-    
+    echo true;
 ?>

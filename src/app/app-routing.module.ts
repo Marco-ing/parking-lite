@@ -11,8 +11,9 @@ import { AutenticarseGuard } from './guard/autenticarse.guard';
 import { MembresiaComponent } from './componentes/membresia/membresia.component';
 import { EditarperfilComponent } from './componentes/editarperfil/editarperfil.component';
 import { ReservacionesComponent } from './componentes/reservaciones/reservaciones.component';
+
 //Hacer Reservacion v
-import { ReservacionComponent} from './componentes/reservacion/reservacion.component';
+
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
@@ -23,7 +24,6 @@ const routes: Routes = [
   {path: 'membresia', component: MembresiaComponent},
   {path: 'editar-perfil', component: EditarperfilComponent},
   {path: 'reservaciones', component: ReservacionesComponent},
-  {path: 'agendarreservacion', component: ReservacionComponent},
   {path: '**', pathMatch: 'full' ,redirectTo: 'home'}
 ];
 

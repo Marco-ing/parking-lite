@@ -11,8 +11,8 @@ export class MembresiaService {
   //baseURL:string='http://localhost/parking-lite/PHP/';
 
   //URL Daniel
-  URL='http://localhost/ParkingWeb/';
-  baseURL:string='http://localhost/ParkingWeb/';
+  URL='http://localhost/parking-lite/PHP/';
+  baseURL:string='http://localhost/parking-lite/PHP/';
 
   constructor(private http:HttpClient) { }
 
