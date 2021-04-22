@@ -22,7 +22,9 @@ import { ReservacionesComponent } from './componentes/reservaciones/reservacione
 //Hacer reservación v
 import { ReservacionComponent } from './componentes/reservacion/reservacion.component';
 import { ReservarService } from './service/reservar.service';
-//
+//Registrarse
+import { RegistroComponent } from './componentes/registro/registro.component';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ReservarService } from './service/reservar.service';
     MembresiaComponent,
     EditarperfilComponent,
     ReservacionesComponent,
-    ReservacionComponent
+    ReservacionComponent,
+    RegistroComponent
+
 
   ],
   imports: [

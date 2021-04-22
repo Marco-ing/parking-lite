@@ -1,0 +1,66 @@
+<div class="container col-sm-8 p-5 mb-5 text-align-center">
+    <h2>Registro</h2>
+    <form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="registrarse">
+        <div class="form-group">
+            <label for="nombre"></label>
+            <input formControlName="nombre" class="form-control" type="text" id="nombre" placeholder="Nombre(s)">
+            <span   class="form-text text-danger"
+                    *ngIf="campoEsValido('nombre')"
+                    >Ingresa tu nombre
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="apellido-paterno"></label>
+            <input formControlName="apellidoPaterno" class="form-control" type="text" id="apellido-paterno"placeholder="Apellido paterno">
+            <span   class="form-text text-danger" 
+                    *ngIf="campoEsValido('apellidoPaterno')"
+                    >Ingresa tu apellido paterno
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="apellido-materno"></label>
+            <input formControlName="apellidoMaterno" class="form-control" type="text" id="apellido-materno"placeholder="Apellido materno">
+            <span   class="form-text text-danger" 
+                    *ngIf="campoEsValido('apellidoMaterno')"
+                    >Ingresa tu apellido materno
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="correo"></label>
+            <input formControlName="correo" class="form-control" type="email" id="correo"placeholder="Correo">
+            <span   class="form-text text-danger"
+                    *ngIf="campoEsValido('correo')"
+                    >Ingrese un correo valido
+            </span>
+        </div>
+        <div class="form-group">
+            <label  for="password"></label>
+            <input  formControlName="password" class="form-control" type="password" id="password" placeholder="Contraseña">
+            <span   class="form-text text-danger"
+                    *ngIf="campoEsValido('password')"
+                    >Ingresa una contraseña válida (mínimo 6 caracteres)
+            </span>
+        </div>
+        <!--NUMERO TARJETA-->
+        <div class="form-group">
+            <label  for="numeroTarjeta"></label>
+            <input  formControlName="numeroTarjeta" class="form-control" type="text" id="numeroTarjeta" placeholder="Número de Tarjeta">
+            <span   class="form-text text-danger"
+                    *ngIf="campoEsValido('numeroTarjeta')"
+                    >Ingresa una tarjeta valida
+            </span>
+        </div>
+        <!--TITULAR TARJETA-->
+        <div class="form-group">
+            <label  for="titularTarjeta"></label>
+            <input  formControlName="titularTarjeta" class="form-control" type="text" id="titularTarjeta" placeholder="Titular de la Tarjeta">
+            <span   class="form-text text-danger"
+                    *ngIf="campoEsValido('titularTarjeta')"
+                    >Ingresa el titular de la tarjeta
+            </span>
+        </div>
+        
+            <div class="col-12">
+            <button  class="btn_registrarse mt-4" type="submit">Registrarse</button>
+        </div>
+    </form>

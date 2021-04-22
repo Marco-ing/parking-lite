@@ -1,54 +1,88 @@
-<!DOCTYPE html>
-
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <style>
-        body{
-            color:#181b32
-        }
-        form {
-
-}
-    </style>
-    <body>
-        <br />
-      <h1 style="text-align: center; font-size: 60px;">Editar perfil</h1>
-      <div style="width: 1250px; height: 500px; margin-left:auto; margin-right:auto; text-align: center; font-size: 30px; border: 4px solid #181b32; border-radius: 20px"> 
-        <section>       
-            <br />
-        <input type="text" placeholder="Nombre" id="name" name="user_name" style="border:none; background-color: transparent;" >
-                <input type="text" placeholder="Apellidos" id="lname" name="lname" style="border:none; background-color: transparent;">
-            </section> 
-            <br/>
-            <section>
-               <input type="text" placeholder="Nombre de usuario" id="uname" name="uname" style="border:none; background-color: transparent;">
-            </section>
-            <br/>
-            <section>
-               <input type="text" placeholder= "Contraseña" id="password" name="password" style="border:none; background-color: transparent;">
-            </section>
-            <br/>
-            <section>
-               <input type="email" placeholder="Correo" id="mail" name="user_mail" style="border:none; background-color: transparent;">
-            </section>
-            <img src="assets/imagenes/logo.png" alt="Logo" class="h-25 w-25 mx-auto d-block mt-3" style="background-color: transparent;">
-            <p><a href="#">Editar foto</a></p>
-            <p><a href="#">Eliminar cuenta</a></p>
-            <div class="text-center form-group">
-            <button type="submit" value="Cancelar"></button>
-            <button type="submit" value="Guardar"></button>
+<div class="container-fluid mt-4 mb-5">
+    <div class="row mx-5">
+        <div class="col-sm mt-5 mx-1">
+            <div class="row mb-5">
+                <p class="mb-4"></p>
+            </div>
+            <div class="row m-5">
+                <img src="assets/imagenes/perfil.jpg" alt="perfil" class="img-thumbnail">
+            </div>
+            
         </div>
-
+        <div class="col-sm mr-5">
+            <div class="row">
+                <h4 class="display-3 text-center mb-4">Mi Perfil</h4>
+            </div>
+            <div class="row border border-2 rounded-3 d-sm-flex">
+                <form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="perfil">
+                    <div class="form-group">
+                        <label for="nombre"></label>
+                        <input formControlName="nombre" class="form-control" type="text" id="nombre" placeholder="Nombre(s)">
+                        <span   class="form-text text-danger"
+                                *ngIf="campoEsValido('nombre')"
+                                >Ingresa tu nombre
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido-paterno"></label>
+                        <input formControlName="apellidoPaterno" class="form-control" type="text" id="apellido-paterno"placeholder="Apellido paterno">
+                        <span   class="form-text text-danger" 
+                                *ngIf="campoEsValido('apellidoPaterno')"
+                                >Ingresa tu apellido paterno
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido-materno"></label>
+                        <input formControlName="apellidoMaterno" class="form-control" type="text" id="apellido-materno"placeholder="Apellido materno">
+                        <span   class="form-text text-danger" 
+                                *ngIf="campoEsValido('apellidoMaterno')"
+                                >Ingresa tu apellido materno
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="correo"></label>
+                        <input formControlName="correo" class="form-control" type="email" id="correo"placeholder="Correo">
+                        <span   class="form-text text-danger"
+                                *ngIf="campoEsValido('correo')"
+                                >Ingrese un correo valido
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label  for="password"></label>
+                        <input  formControlName="password" class="form-control" type="password" id="password" placeholder="Contraseña">
+                        <span   class="form-text text-danger"
+                                *ngIf="campoEsValido('password')"
+                                >Ingresa una contraseña válida (mínimo 6 caracteres)
+                        </span>
+                    </div>
+                    <!--NUMERO TARJETA-->
+                    <div class="form-group">
+                        <label  for="numeroTarjeta"></label>
+                        <input  formControlName="numeroTarjeta" class="form-control" type="text" id="numeroTarjeta" placeholder="Número de Tarjeta">
+                        <span   class="form-text text-danger"
+                                *ngIf="campoEsValido('numeroTarjeta')"
+                                >Ingresa una tarjeta valida
+                        </span>
+                    </div>
+                    <!--TITULAR TARJETA-->
+                    <div class="form-group">
+                        <label  for="titularTarjeta"></label>
+                        <input  formControlName="titularTarjeta" class="form-control" type="text" id="titularTarjeta" placeholder="Titular de la Tarjeta">
+                        <span   class="form-text text-danger"
+                                *ngIf="campoEsValido('titularTarjeta')"
+                                >Ingresa el titular de la tarjeta
+                        </span>
+                    </div>
+                    <div class="container d-flex">
+                        <div>
+                            <button  class="btn_registrarse mt-4" type="submit">Modificar</button>
+                        </div>
+                        <div>
+                            <button  class=" mt-4" type="submit">Eliminar Cuenta</button>
+                        </div>
+                    </div>
+                </form>    
+            </div>
         </div>
-        <br />
-        
-        <script src="" async defer></script>
-    </body>
-</html>
+    </div>
+</div>

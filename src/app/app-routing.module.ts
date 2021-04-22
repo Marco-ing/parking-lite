@@ -12,6 +12,7 @@ import { MembresiaComponent } from './componentes/membresia/membresia.component'
 import { EditarperfilComponent } from './componentes/editarperfil/editarperfil.component';
 import { ReservacionesComponent } from './componentes/reservaciones/reservaciones.component';
 import { ReservacionComponent} from './componentes/reservacion/reservacion.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 
 
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'editar-perfil', component: EditarperfilComponent},
   {path: 'reservaciones', component: ReservacionesComponent},
   {path: 'agendarreservacion', component: ReservacionComponent},
+  {path: 'registrarse', component: RegistroComponent},
   {path: '**', pathMatch: 'full' ,redirectTo: 'home'}
 ];
 
