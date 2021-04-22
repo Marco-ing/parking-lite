@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row mt-3">
+        <h2 class="text-center display-4">Membresia Parking Lite</h2>
+    </div>
+    <div class="row">
+        <div class="text-center col-sm mt-3 mb-5">
+            <h2 class="text-center display-8 mb-4">Seleciona tu fecha de inicio</h2>
+            <ngb-datepicker #dp [(ngModel)]="model" [(ngModel)]="model1" (navigate)="date = $event.next" [showWeekNumbers]="true" [minDate]="hoy"
+            [maxDate]="{year: 2048, month: 12, day: 31}" [startDate]="hoy"></ngb-datepicker>
+            <p class="texte-center display-10 mt-4 container">*Recuerda que la Membresia Parking Lite te otorga a partir de tu fecha de inicio 30 dias de un cajon de estacionamiento exclusivo para ti las 24 horas del día.</p>
+        </div>
+        <div class="col-sm mt-3">
+            <pre>{{model}}</pre>
+            <pre>{{model1}}</pre>
+        </div>
+    </div>    
+</div>
+
+
