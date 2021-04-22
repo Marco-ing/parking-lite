@@ -22,7 +22,6 @@ export class RegistroComponent implements OnInit {
     
   }
   
-
   //Formulario registrarse responsivo
   registrarse: FormGroup = this.fb.group({
     nombre          : ['',[Validators.required]],

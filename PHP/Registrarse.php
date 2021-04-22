@@ -8,15 +8,17 @@
     require("ConexionBD.php");
     $conexion = conexion();
     
-    mysqli_query($conexion,"CALL AgregarUsuario('$params->nombre','$params->paterno','$params->materno','$params->password','$params->correo','$params->numeroTarjeta','$params->titularTarjeta')");
+    if(isset($params)){
+        mysqli_query($conexion,"CALL AgregarUsuario('$params->nombre','$params->paterno','$params->materno','$params->password','$params->correo','$params->numeroTarjeta','$params->titularTarjeta')");
 
-    class Result {}
+        class Result {}
 
-    $respuesta = new Result();
+        $respuesta = new Result();
 
-    $respuesta->resultado = 'OK';
-    $respuesta->mensaje = 'Cliente registrado';
-    
-    header('Content-Type: application/json');
-    echo json_encode($respuesta);  
+        $respuesta->resultado = 'OK';
+        $respuesta->mensaje = 'Cliente registrado';
+        
+        header('Content-Type: application/json');
+        echo json_encode($respuesta);  
+    }
 ?>
