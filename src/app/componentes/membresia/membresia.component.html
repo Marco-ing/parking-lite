@@ -6,7 +6,7 @@
         <div class="text-center col-sm mt-3 mb-5">
             <h2 class="text-center display-8 mb-4">Seleciona tu fecha de inicio</h2>
             <ngb-datepicker #dp [(ngModel)]="model" (dateSelect)="onDateSelect($event)" [showWeekNumbers]="true" [minDate]="hoy"
-            [maxDate]="{year: 2048, month: 12, day: 31}" [startDate]="hoy" (navigate)="date = $event.next"></ngb-datepicker>
+            [maxDate]="{year: 2048, month: 12, day: 31}" [startDate]="hoy" ></ngb-datepicker>
             <p class="texte-center display-10 mt-4 container">*Recuerda que la Membresia Parking Lite te otorga a partir de tu fecha de inicio 30 dias de un cajon de estacionamiento exclusivo para ti las 24 horas del día.</p>
         </div>
         <div class="col-sm mt-3">
@@ -16,9 +16,9 @@
             <form [formGroup]="tarjeta">
                 <div class="input-group input-group-lg mt-3">
                     <input type="text" [(ngModel)]="tardat.titular" formControlName="titular" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="titular" placeholder="Titular de la tarjeta" [ngClass]="{ 'is-invalid':submitted && f.titular.errors }"
-                    onkeypress="return ((event.charCode >= 65 && event.charCode <= 90)||(event.charCode >= 97 && event.charCode <= 122)||(event.charCode <= 193)||(event.charCode <= 201)||(event.charCode <= 205)||(event.charCode <= 211)||(event.charCode <= 218)||(event.charCode <= 225)||(event.charCode <= 233)||(event.charCode <= 237)||(event.charCode <= 243)||(event.charCode <= 250))">
+                    (keypress)="valnom($event)">
                     <div *ngIf="submitted && f.titular.errors" class="invalid-feedback">
-                        <div *ngIf="f.titular.errors.required">Introduce tu correo electronico.</div>
+                        <div *ngIf="f.titular.errors.required">Introduce el nombre del titular de la tarjeta.</div>
                     </div>
                 </div>
                 <div class="input-group input-group-lg mt-3">
@@ -58,7 +58,7 @@
                                     <input type="text" [(ngModel)]="tardat.cvv" formControlName="cvv" 
                                     class="form-control " aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-lg" id="cvv" placeholder="CVV" maxlength="3"
-                                    [ngClass]="{ 'is-invalid':submitted && f.cvv.errors }">
+                                    [ngClass]="{ 'is-invalid':submitted && f.cvv.errors }" (keypress)="valcvv($event)">
                                     <div *ngIf="submitted && f.cvv.errors" class="invalid-feedback">
                                         <div *ngIf="f.cvv.errors.required">Introduce tu cvv de tu tarjeta.</div>
                                         <div *ngIf="f.cvv.errors.minlength">Introduce un cvv válido.</div>

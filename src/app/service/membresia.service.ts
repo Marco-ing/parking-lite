@@ -18,4 +18,11 @@ export class MembresiaService {
       return data;
     }));
   }
+
+  insertMem(id,fechainicio,monto){
+    return this.http.post<any>(this.baseURL+"InsertarMembresia.php",{id,fechainicio,monto})
+    .pipe(map(data=>{
+      return data;
+    }));
+  }
 }

@@ -49,7 +49,8 @@ export class MembresiaComponent implements OnInit {
   model: NgbDateStruct;
   inicio:string;
   final:string;
-  date: {year: number, month: number};
+  titular:string;
+  date: {year: number, month: number,day:number};
   hoy:{year: number, month: number, day: number};
   total:number;
   tarjeta:FormGroup;
@@ -63,16 +64,29 @@ export class MembresiaComponent implements OnInit {
 
   constructor(private calendar: NgbCalendar,private service:MembresiaService,private formbuilder:FormBuilder) {
     this.hoy=this.calendar.getNext(this.calendar.getToday(),'d',1);
+    this.date=this.calendar.getNext(this.calendar.getToday(),'d',1);
     this.service.getTarifa()
     .pipe(first())
     .subscribe(data=>{
       this.total=data[0].TarifaMembresia;
+      var user=JSON.parse(localStorage.getItem('token'));
+      (<HTMLInputElement>document.getElementById("titular")).value=user.titulartarjeta;
+      var aux=user.numtarjeta;
+      var tar="";
+      for(var i=0;i<16;i++){
+        tar+=aux[i];
+        if(i==3 || i==7 || i==11){
+          tar+=" ";
+        }
+      }
+      (<HTMLInputElement>document.getElementById("numero")).value=tar;
+      this.tardat.titular=user.titulartarjeta;
+      this.tardat.numero=tar;
     });
     this.selectToday();
     this.inicio=meses['days'][this.calendar.getWeekday(this.calendar.getNext(this.calendar.getToday(),'d',1))-1]+" "+this.calendar.getNext(this.calendar.getToday(),'d',1).day+" de "+meses['months'][this.calendar.getNext(this.calendar.getToday(),'d',1).month-1]+" del "+this.calendar.getNext(this.calendar.getToday(),'d',1).year;
     this.final=meses['days'][this.calendar.getWeekday(this.calendar.getNext(this.calendar.getToday(),'d',30))-1]+" "+this.calendar.getNext(this.calendar.getToday(),'d',30).day+" de "+meses['months'][this.calendar.getNext(this.calendar.getToday(),'d',30).month-1]+" del "+this.calendar.getNext(this.calendar.getToday(),'d',30).year;
-    var user=JSON.parse(localStorage.getItem('token'));
-    (<HTMLInputElement>document.getElementById("expira")).value=user.titulartarjeta;
+    
   }
 
   ngOnInit(): void {
@@ -95,10 +109,20 @@ export class MembresiaComponent implements OnInit {
   }
 
   Autenticar_Tarjeta(tarjeta){
-
+    var user=JSON.parse(localStorage.getItem('token'));
+    var id=user.idusuario;
+    this.service.insertMem(id,this.date,this.total)
+    .pipe(first())
+    .subscribe(data=>{
+      console.log(data.idmembresia);
+    },
+    error=>{
+      alert("No hay lugares disponibles para tu membresía.");
+    });
   }
 
   onDateSelect($event){
+    this.date=this.calendar.getNext($event,'d',0);
     this.inicio=meses['days'][this.calendar.getWeekday($event)-1]+" "+$event.day+" de "+meses['months'][$event.month-1]+" del "+$event.year;
     this.final=meses['days'][this.calendar.getWeekday(this.calendar.getNext($event,'d',29))-1]+" "+this.calendar.getNext($event,'d',29).day+" de "+meses['months'][this.calendar.getNext($event,'d',29).month-1]+" del "+this.calendar.getNext($event,'d',29).year;
   }
@@ -112,7 +136,7 @@ export class MembresiaComponent implements OnInit {
     if(inputValue.length==2){
       (<HTMLInputElement>document.getElementById("expira")).value=inputValue+"/";
     }
-    return ($event.charCode >= 48 && $event.charCode <= 57)
+    return ($event.charCode >= 48 && $event.charCode <= 57);
   }
 
   quitarslash($event){
@@ -129,7 +153,7 @@ export class MembresiaComponent implements OnInit {
     if(inputValue.length==4 || inputValue.length==9 || inputValue.length==14){
       (<HTMLInputElement>document.getElementById("numero")).value=inputValue+" ";
     }
-    return ($event.charCode >= 48 && $event.charCode <= 57)
+    return ($event.charCode >= 48 && $event.charCode <= 57);
   }
 
   quitarespacio($event){
@@ -139,5 +163,11 @@ export class MembresiaComponent implements OnInit {
         (<HTMLInputElement>document.getElementById("numero")).value=inputValue.substring(0,inputValue.length-1);
       }
     }
+  }
+  valnom($event){
+    return (($event.charCode >= 65 && $event.charCode <= 90)||($event.charCode >= 97 && $event.charCode <= 122)||($event.charCode == 193)||($event.charCode == 201)||($event.charCode == 205)||($event.charCode == 211)||($event.charCode == 218)||($event.charCode == 225)||($event.charCode == 233)||($event.charCode == 237)||($event.charCode == 243)||($event.charCode == 250)||($event.charCode == 32))
+  }
+  valcvv($event){
+    return ($event.charCode >= 48 && $event.charCode <= 57);
   }
 }
