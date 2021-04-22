@@ -24,7 +24,8 @@ export class NavbarComponent implements OnInit {
         this.registrarse=true;
         this.cerrarsesion=true;
         this.user=true;
-        this.nombre=this.servicio.getUser();
+        var a=JSON.parse(this.servicio.getToken());
+        this.nombre=a.nombre;
       }
       else{
         this.autenticarse=false;

@@ -9,8 +9,8 @@ import { map } from 'rxjs/operators';
 })
 export class ReservacionesService {
 
-  URL='http://localhost:81/parking-lite/PHP/';
-  //URL='http://localhost/parking-lite/PHP/';
+  //URL='http://localhost:81/parking-lite/PHP/';
+  URL='http://localhost/parking-lite/PHP/';
   constructor(private http: HttpClient,private httpClient: HttpClient) { }
   mostrarTodos(correo){
     return this.httpClient.post<any>(this.URL+'mostrarReservaciones.php',{correo})

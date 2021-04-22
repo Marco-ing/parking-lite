@@ -1,8 +1,8 @@
-pre{
-    font-family: 'Principal', Arial, Helvetica, sans-serif;
-    color: #181b32;
-    font-size: 14px;
-}
+
 p{
-    font-size: 14px;
+    font-size: 16px;
+}
+#expira,#cvv{
+    width: 120px;
+    display: block;
 }

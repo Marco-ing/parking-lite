@@ -14,37 +14,64 @@
             <p>Final de tu membresia: {{final}}</p>
             <p>Total: ${{total}}</p>
             <form [formGroup]="tarjeta">
-                <div class="input-group input-group-lg">
-                    <input type="text" [(ngModel)]="tardat.titular" formControlName="titular" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="titular" placeholder="Titular de la tarjeta" [ngClass]="{ 'is-invalid':submitted && f.titular.errors }">
+                <div class="input-group input-group-lg mt-3">
+                    <input type="text" [(ngModel)]="tardat.titular" formControlName="titular" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="titular" placeholder="Titular de la tarjeta" [ngClass]="{ 'is-invalid':submitted && f.titular.errors }"
+                    onkeypress="return ((event.charCode >= 65 && event.charCode <= 90)||(event.charCode >= 97 && event.charCode <= 122)||(event.charCode <= 193)||(event.charCode <= 201)||(event.charCode <= 205)||(event.charCode <= 211)||(event.charCode <= 218)||(event.charCode <= 225)||(event.charCode <= 233)||(event.charCode <= 237)||(event.charCode <= 243)||(event.charCode <= 250))">
                     <div *ngIf="submitted && f.titular.errors" class="invalid-feedback">
                         <div *ngIf="f.titular.errors.required">Introduce tu correo electronico.</div>
                     </div>
                 </div>
-                <div class="input-group input-group-lg">
+                <div class="input-group input-group-lg mt-3">
                     <input type="text" [(ngModel)]="tardat.numero" formControlName="numero" 
-                    class="form-control " aria-label="Sizing example input"  maxlength="16"
+                    class="form-control " aria-label="Sizing example input"  maxlength="19"
                     aria-describedby="inputGroup-sizing-lg" id="numero" placeholder="Numero de la tarjeta" 
-                    [ngClass]="{ 'is-invalid':submitted && f.numero.errors }" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
+                    [ngClass]="{ 'is-invalid':submitted && f.numero.errors }" (keypress)="Tarjetanumero($event)" (keydown)="quitarespacio($event)">
                     <div *ngIf="submitted && f.numero.errors" class="invalid-feedback">
                         <div *ngIf="f.numero.errors.required">Introduce tu numero de tarjeta.</div>
                         <div *ngIf="f.numero.errors.minlength">Introduce un numero de tarjeta válido.</div>
                     </div>
                 </div>
                 <div class="input-group input-group-lg">
-                    <div class="row">
-                        <div class="col-sm">
-                            <input type="date" [(ngModel)]="tardat.expira" formControlName="expira" 
-                            class="form-control " aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-lg" id="expira">
+                    
+                        <div class="col-sm text-center form-group">
+                            <div class="text-center form-group">
+                                <div class="row">
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm mt-3">
+                                        <input type="text" [(ngModel)]="tardat.expira" formControlName="expira" 
+                                        class="form-control " aria-label="Sizing example input"
+                                        aria-describedby="inputGroup-sizing-lg" id="expira" placeholder="MM/YY" maxlength="5" (keypress)="Expiracion($event)"
+                                        (keydown)="quitarslash($event)"[ngClass]="{ 'is-invalid':submitted && f.expira.errors }">
+                                        <div *ngIf="submitted && f.expira.errors" class="invalid-feedback">
+                                            <div *ngIf="f.expira.errors.required">Introduce tu fecha de vigenci.</div>
+                                            <div *ngIf="f.expira.errors.minlength">Introduce una fecha de vigencia válida.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-sm">
-                            <input type="text">
+                        <div class="col-sm text-center">
+                            <div class="row">
+                                <div class="col-sm"></div>
+                                <div class="col-sm mt-3">
+                                    <input type="text" [(ngModel)]="tardat.cvv" formControlName="cvv" 
+                                    class="form-control " aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-lg" id="cvv" placeholder="CVV" maxlength="3"
+                                    [ngClass]="{ 'is-invalid':submitted && f.cvv.errors }">
+                                    <div *ngIf="submitted && f.cvv.errors" class="invalid-feedback">
+                                        <div *ngIf="f.cvv.errors.required">Introduce tu cvv de tu tarjeta.</div>
+                                        <div *ngIf="f.cvv.errors.minlength">Introduce un cvv válido.</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm"></div>
+                            </div>
                         </div>
-                    </div>
+                    
                 </div>
-                
-                
-                <button type="submit" class="btn btn-primary btn-lg" (click)="AutenticarTarjeta()">Comprar</button>
+                <div class="text-center form-group mt-3">
+                    <button type="submit" class="btn btn-primary btn-lg" (click)="AutenticarTarjeta()">Comprar</button>
+                </div>
             </form>
         </div>
     </div>    

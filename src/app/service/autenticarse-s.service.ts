@@ -12,10 +12,10 @@ export class AutenticarseSService {
 
   redirectUrl:string;
   //Ruteo Marco Antonio
-  URL='http://localhost:81/parking-lite/PHP/';
-  baseURL:string='http://localhost:81/parking-lite/PHP/';
- // URL='http://localhost/parking-lite/PHP/';
- // baseURL:string='http://localhost/parking-lite/PHP/';
+  //URL='http://localhost:81/parking-lite/PHP/';
+  //baseURL:string='http://localhost:81/parking-lite/PHP/';
+    URL='http://localhost/parking-lite/PHP/';
+    baseURL:string='http://localhost/parking-lite/PHP/';
 
   @Output() getLoggedInName: EventEmitter<any>=new EventEmitter();
 
@@ -24,24 +24,19 @@ export class AutenticarseSService {
   VerificarDatos(email,password){
     return this.httpClient.post<any>(this.baseURL+'Autenticarse.php',{email,password})
     .pipe(map(Users => {
-    this.setToken(Users[0].correo,Users[0].nombre);
+      this.setToken(JSON.stringify(Users[0]));
       this.getLoggedInName.emit(true);
       return Users;
     }));
   }
-  setToken(token:string,user:string){
+  setToken(token:string){
     localStorage.setItem('token',token);
-    localStorage.setItem('user',user);
   }
   getToken(){
     return localStorage.getItem('token');
   }
-  getUser(){
-    return localStorage.getItem('user');
-  }
   deleteToken(){
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
   }
   isLoggedIn(){
     const usertoken=this.getToken();

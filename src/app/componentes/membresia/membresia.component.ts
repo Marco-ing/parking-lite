@@ -4,7 +4,6 @@ import { first } from 'rxjs/operators';
 import { MembresiaService } from 'src/app/service/membresia.service';
 import { FormsModule, FormGroup, FormBuilder, Validators, NgForm, ReactiveFormsModule} from '@angular/forms';
 
-
 const meses={
   days:['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo'],
   months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
@@ -72,14 +71,16 @@ export class MembresiaComponent implements OnInit {
     this.selectToday();
     this.inicio=meses['days'][this.calendar.getWeekday(this.calendar.getNext(this.calendar.getToday(),'d',1))-1]+" "+this.calendar.getNext(this.calendar.getToday(),'d',1).day+" de "+meses['months'][this.calendar.getNext(this.calendar.getToday(),'d',1).month-1]+" del "+this.calendar.getNext(this.calendar.getToday(),'d',1).year;
     this.final=meses['days'][this.calendar.getWeekday(this.calendar.getNext(this.calendar.getToday(),'d',30))-1]+" "+this.calendar.getNext(this.calendar.getToday(),'d',30).day+" de "+meses['months'][this.calendar.getNext(this.calendar.getToday(),'d',30).month-1]+" del "+this.calendar.getNext(this.calendar.getToday(),'d',30).year;
+    var user=JSON.parse(localStorage.getItem('token'));
+    (<HTMLInputElement>document.getElementById("expira")).value=user.titulartarjeta;
   }
 
   ngOnInit(): void {
     this.tarjeta=this.formbuilder.group({
       titular:['',Validators.required],
-      numero:['',[Validators.required,Validators.minLength(16)]],
-      expira:['',Validators.required],
-      cvv:['',Validators.required,Validators.minLength(3),Validators.maxLength(3)]
+      numero:['',[Validators.required,Validators.minLength(19)]],
+      expira:['',[Validators.required,Validators.minLength(5)]],
+      cvv:['',[Validators.required,Validators.minLength(3)]]
     });
   }
   
@@ -104,5 +105,39 @@ export class MembresiaComponent implements OnInit {
 
   selectToday() {
     this.model = this.calendar.getNext(this.calendar.getToday(),'d',1);
+  }
+
+  Expiracion($event){
+    var inputValue = (<HTMLInputElement>document.getElementById("expira")).value;
+    if(inputValue.length==2){
+      (<HTMLInputElement>document.getElementById("expira")).value=inputValue+"/";
+    }
+    return ($event.charCode >= 48 && $event.charCode <= 57)
+  }
+
+  quitarslash($event){
+    if($event.key=="Backspace" || $event.key=="Delete"){
+      var inputValue = (<HTMLInputElement>document.getElementById("expira")).value;
+      if(inputValue.length==4){
+        (<HTMLInputElement>document.getElementById("expira")).value=inputValue.substring(0,inputValue.length-1);
+      }
+    }
+  }
+
+  Tarjetanumero($event){
+    var inputValue = (<HTMLInputElement>document.getElementById("numero")).value;
+    if(inputValue.length==4 || inputValue.length==9 || inputValue.length==14){
+      (<HTMLInputElement>document.getElementById("numero")).value=inputValue+" ";
+    }
+    return ($event.charCode >= 48 && $event.charCode <= 57)
+  }
+
+  quitarespacio($event){
+    if($event.key=="Backspace" || $event.key=="Delete"){
+      var inputValue = (<HTMLInputElement>document.getElementById("numero")).value;
+      if(inputValue.length==6 || inputValue.length==11 || inputValue.length==16){
+        (<HTMLInputElement>document.getElementById("numero")).value=inputValue.substring(0,inputValue.length-1);
+      }
+    }
   }
 }
