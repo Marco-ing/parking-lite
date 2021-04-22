@@ -17,7 +17,13 @@ import { AutenticarseSService } from './service/autenticarse-s.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MembresiaComponent } from './componentes/membresia/membresia.component';
 import { EditarperfilComponent } from './componentes/editarperfil/editarperfil.component';
+//Ver Reservaciones
 import { ReservacionesComponent } from './componentes/reservaciones/reservaciones.component';
+//Hacer reservación v
+import { ReservacionComponent } from './componentes/reservacion/reservacion.component';
+import { ReservarService } from './service/reservar.service';
+//
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +36,9 @@ import { ReservacionesComponent } from './componentes/reservaciones/reservacione
     AutenticarseFormComponent,
     MembresiaComponent,
     EditarperfilComponent,
-    ReservacionesComponent
+    ReservacionesComponent,
+    ReservacionComponent
+
   ],
   imports: [
     BrowserModule,
@@ -41,7 +49,8 @@ import { ReservacionesComponent } from './componentes/reservaciones/reservacione
     ReactiveFormsModule
   ],
   providers: [
-    AutenticarseSService
+    AutenticarseSService,
+    ReservarService
   ],
   bootstrap: [AppComponent]
 })

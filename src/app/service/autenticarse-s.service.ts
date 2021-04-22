@@ -14,8 +14,13 @@ export class AutenticarseSService {
   //Ruteo Marco Antonio
   //URL='http://localhost:81/parking-lite/PHP/';
   //baseURL:string='http://localhost:81/parking-lite/PHP/';
-    URL='http://localhost/parking-lite/PHP/';
-    baseURL:string='http://localhost/parking-lite/PHP/';
+ // URL='http://localhost/parking-lite/PHP/';
+ // baseURL:string='http://localhost/parking-lite/PHP/';
+
+  //URL Daniel
+  URL='http://localhost/ParkingWeb/';
+  baseURL:string='http://localhost/ParkingWeb/';
+
 
   @Output() getLoggedInName: EventEmitter<any>=new EventEmitter();
 

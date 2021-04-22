@@ -1,0 +1,30 @@
+.principal{
+    padding: 50px;
+    padding-top: 10px;
+  }
+  
+  .h2__titulo{
+    color:#45526c;
+    margin-bottom: 20px;
+  }
+  .reservacion{
+   border: 2px #5aa897 solid;
+   border-radius: 25px;
+   padding: 30px;
+  
+  
+  }
+  .select__metodo{
+    background-color: #5aa897;
+    color:#fff;
+  }
+  .p__total{
+    font-size:25px;
+    font-weight: bold;
+  }
+  .button_impro{
+    width: 80%;
+  }
+  .tarifas{
+    margin: auto;
+  }
