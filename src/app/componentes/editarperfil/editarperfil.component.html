@@ -15,31 +15,31 @@
             </div>
             <div class="row border border-2 rounded-3 d-sm-flex">
                 <form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="perfil">
-                    <div class="form-group">
-                        <label for="nombre"></label>
-                        <input formControlName="nombre" class="form-control" type="text" id="nombre" placeholder="Nombre(s)">
+                    <div class="form-group m-2">
+                        <label for="nombre">Nombre:</label>
+                        <input formControlName="nombre" class="form-control" type="text" id="nombre" placeholder="{{Usuario[1]}}">
                         <span   class="form-text text-danger"
                                 *ngIf="campoEsValido('nombre')"
                                 >Ingresa tu nombre
                         </span>
                     </div>
-                    <div class="form-group">
-                        <label for="apellido-paterno"></label>
-                        <input formControlName="apellidoPaterno" class="form-control" type="text" id="apellido-paterno"placeholder="Apellido paterno">
+                    <div class="form-group m-2">
+                        <label for="apellido-paterno">Apellido Paterno</label>
+                        <input formControlName="apellidoPaterno" class="form-control" type="text" id="apellido-paterno"placeholder="{{Usuario[2]}}">
                         <span   class="form-text text-danger" 
                                 *ngIf="campoEsValido('apellidoPaterno')"
                                 >Ingresa tu apellido paterno
                         </span>
                     </div>
-                    <div class="form-group">
-                        <label for="apellido-materno"></label>
-                        <input formControlName="apellidoMaterno" class="form-control" type="text" id="apellido-materno"placeholder="Apellido materno">
+                    <div class="form-group m-2">
+                        <label for="apellido-materno">Apellido Materno</label>
+                        <input formControlName="apellidoMaterno" class="form-control" type="text" id="apellido-materno"placeholder="{{Usuario[3]}}">
                         <span   class="form-text text-danger" 
                                 *ngIf="campoEsValido('apellidoMaterno')"
                                 >Ingresa tu apellido materno
                         </span>
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group m-2">
                         <label for="correo"></label>
                         <input formControlName="correo" class="form-control" type="email" id="correo"placeholder="Correo">
                         <span   class="form-text text-danger"
@@ -47,38 +47,39 @@
                                 >Ingrese un correo valido
                         </span>
                     </div>
-                    <div class="form-group">
-                        <label  for="password"></label>
-                        <input  formControlName="password" class="form-control" type="password" id="password" placeholder="Contraseña">
+                    <div class="form-group m-2">
+                        <label  for="password">Contraseña</label>
+                        <input  formControlName="password" class="form-control" type="password" id="password" placeholder="{{Usuario[5]}}">
                         <span   class="form-text text-danger"
                                 *ngIf="campoEsValido('password')"
                                 >Ingresa una contraseña válida (mínimo 6 caracteres)
                         </span>
-                    </div>
+                    </div>-->
+                    
                     <!--NUMERO TARJETA-->
-                    <div class="form-group">
-                        <label  for="numeroTarjeta"></label>
-                        <input  formControlName="numeroTarjeta" class="form-control" type="text" id="numeroTarjeta" placeholder="Número de Tarjeta">
+                    <div class="form-group m-2">
+                        <label  for="numeroTarjeta">Numero Tarjeta</label>
+                        <input  formControlName="numeroTarjeta" class="form-control" type="text" id="numeroTarjeta" placeholder="{{Usuario[6]}}">
                         <span   class="form-text text-danger"
                                 *ngIf="campoEsValido('numeroTarjeta')"
                                 >Ingresa una tarjeta valida
                         </span>
                     </div>
                     <!--TITULAR TARJETA-->
-                    <div class="form-group">
-                        <label  for="titularTarjeta"></label>
-                        <input  formControlName="titularTarjeta" class="form-control" type="text" id="titularTarjeta" placeholder="Titular de la Tarjeta">
+                    <div class="form-group m-2">
+                        <label  for="titularTarjeta">Titular Tarjeta</label>
+                        <input  formControlName="titularTarjeta" class="form-control" type="text" id="titularTarjeta" placeholder="{{Usuario[7]}}">
                         <span   class="form-text text-danger"
                                 *ngIf="campoEsValido('titularTarjeta')"
                                 >Ingresa el titular de la tarjeta
                         </span>
                     </div>
-                    <div class="container d-flex">
+                    <div class="container d-flex justify-content-between align-items-center">
                         <div>
-                            <button  class="btn_registrarse mt-4" type="submit">Modificar</button>
+                            <button  class="btn_registrarse ml-5" type="submit">Modificar</button>
                         </div>
                         <div>
-                            <button  class=" mt-4" type="submit">Eliminar Cuenta</button>
+                            <button  class="m-3" type="submit">Eliminar Cuenta</button>
                         </div>
                     </div>
                 </form>    

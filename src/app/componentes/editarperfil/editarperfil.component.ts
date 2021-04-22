@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Users } from 'src/app/Clases/Users';
+import { AutenticarseSService } from 'src/app/service/autenticarse-s.service';
+import { EditarPerfilService } from 'src/app/service/editar-perfil.service';
 import { PerfilService } from 'src/app/service/perfil.service';
 
 @Component({
@@ -12,12 +14,14 @@ import { PerfilService } from 'src/app/service/perfil.service';
 export class EditarperfilComponent implements OnInit {
 
     //Usuario a capturar
+    UsuarioModificado:Users;
     Usuario:Users;
 
-    constructor(private editarPerfilServicio: PerfilService ,private fb: FormBuilder) { }
+    constructor(private ServicioPerfil: PerfilService ,private ServicioEditarPerfil: EditarPerfilService, private servicio:AutenticarseSService, 
+      private fb: FormBuilder) { }
   
     ngOnInit(): void {
-      
+      this.MostrarPerfil();
     }
     
     //Formulario registrarse responsivo
@@ -44,7 +48,7 @@ export class EditarperfilComponent implements OnInit {
         return;
       }
   
-      this.Usuario = new Users(0,
+      this.UsuarioModificado = new Users(0,
           this.perfil.value.nombre,
           this.perfil.value.apellidoPaterno,
           this.perfil.value.apellidoMaterno,
@@ -53,8 +57,16 @@ export class EditarperfilComponent implements OnInit {
           this.perfil.value.numeroTarjeta,
           this.perfil.value.titularTarjeta
       );
-      
-  }
+    }
+
+    MostrarPerfil(){
+      this.Usuario = JSON.parse(this.servicio.getToken());
+      //console.log(this.Usuario);
+    }
+
+    ActualizarPerfil(){
+
+    }
   
     
    
