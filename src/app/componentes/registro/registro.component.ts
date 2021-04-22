@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { RegistrarseService } from 'src/app/service/registrarse.service';
+import { HttpClient } from '@angular/common/http';
+import { Users } from '../../Users';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-registro',
@@ -8,7 +12,10 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 })
 export class RegistroComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  //Usuario a capturar
+  Usuario:Users;
+
+  constructor(private registroServicio: RegistrarseService ,private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
@@ -35,7 +42,25 @@ export class RegistroComponent implements OnInit {
       this.registrarse.markAllAsTouched();
       return;
     }
-    console.log(this.registrarse.value);
+
+    this.Usuario = new Users(0,
+        this.registrarse.value.nombre,
+        this.registrarse.value.apellidoPaterno,
+        this.registrarse.value.apellidoMaterno,
+        this.registrarse.value.correo,
+        this.registrarse.value.password        
+    );
+
+    nombre    : String = this.registrarse.value.nombre;
+    aPaterno  : String = this.registrarse.value.apellidoPaterno;
+    aMaterno  : String = this.registrarse.value.apellidoMaterno;
+    correo    : String = this.registrarse.value.correo;
+    password  : String = this.registrarse.value.password;
     
+    console.log(this.Usuario);
+  }
+
+  verificarCorreo(correo:string):boolean{
+    this.registroServicio.verificarCorreo(correo).subscribe(result => )
   }
 }
