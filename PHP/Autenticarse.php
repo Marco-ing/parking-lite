@@ -14,6 +14,7 @@
             $datos[0]['contrasenia']="";
         }
     }
+    
     $json = json_encode($datos);
 
     echo $json;
