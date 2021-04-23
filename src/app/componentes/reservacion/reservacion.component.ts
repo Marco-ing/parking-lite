@@ -48,7 +48,7 @@ export class ReservacionComponent implements OnInit {
   Insertar(reservar):void{
     var a=JSON.parse(this.servicio.getToken());
     var socio = a.idsocio;
-    this.ReservarService.InsertarDatos(reservar.value.finicio,reservar.value.hinicio,reservar.value.ffinal,reservar.value.hfinal,socio)
+    this.ReservarService.InsertarDatos(reservar.value.finicio,reservar.value.hinicio,reservar.value.hfinal,socio)
     .pipe(first())
     .subscribe(
         data =>{
