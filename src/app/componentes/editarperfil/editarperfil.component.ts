@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Users } from 'src/app/Clases/Users';
 import { AutenticarseSService } from 'src/app/service/autenticarse-s.service';
@@ -21,12 +21,22 @@ export class EditarperfilComponent implements OnInit {
       private fb: FormBuilder) { }
   
     ngOnInit(): void {
-      this.MostrarPerfil();
+      this.Usuario = JSON.parse(this.servicio.getToken());
+      this.perfil.reset({
+        nombre          : this.Usuario[1],
+        apellidoPaterno : this.Usuario[2],
+        apellidoMaterno : this.Usuario[3],
+        correo          : this.Usuario[4],
+        password        : this.Usuario[5],
+        numeroTarjeta   : this.Usuario[6],
+        titularTarjeta  : this.Usuario[7],
+      })
+      //console.log(this.Usuario);
     }
     
     //Formulario registrarse responsivo
     perfil: FormGroup = this.fb.group({
-      nombre          : ['',[Validators.required]],
+      nombre          : [,[Validators.required]],
       apellidoPaterno : ['',Validators.required],
       apellidoMaterno : ['',Validators.required],
       correo          : ['',[Validators.required,Validators.email]],
@@ -57,17 +67,12 @@ export class EditarperfilComponent implements OnInit {
           this.perfil.value.numeroTarjeta,
           this.perfil.value.titularTarjeta
       );
-    }
-
-    MostrarPerfil(){
-      this.Usuario = JSON.parse(this.servicio.getToken());
-      //console.log(this.Usuario);
-    }
-
-    ActualizarPerfil(){
-
-    }
-  
-    
-   
+      //alert(this.UsuarioModificado);
+      this.ServicioEditarPerfil.actualizar(this.UsuarioModificado).subscribe(datos => {
+        if(datos['resultado']=='OK'){
+          alert(datos['mensaje']);
+        }
+      }); 
+      
+    } 
 }

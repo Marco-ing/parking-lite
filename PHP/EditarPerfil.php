@@ -9,14 +9,17 @@
     $conexion = conexion();
     
     if(isset($params)){
-        mysqli_query($conexion,"");
-
+        mysqli_query($conexion,"UPDATE usuario AS us 
+                                INNER JOIN socio AS so 
+                                ON us.IdUsuario=so.IdSocio 
+                                SET us.Apaterno='$params->paterno',us.Amaterno='$params->materno',us.Nombre='$params->nombre', so.NumTarjeta='$params->numeroTarjeta',so.TitularTarjeta='$params->titularTarjeta'
+                                WHERE so.Correo='$params->correo'");
         class Result {}
 
         $respuesta = new Result();
 
         $respuesta->resultado = 'OK';
-        $respuesta->mensaje = 'Cliente registrado';
+        $respuesta->mensaje = 'Información actualizada';
         
         header('Content-Type: application/json');
         echo json_encode($respuesta);  
