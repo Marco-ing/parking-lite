@@ -1,1 +1,25 @@
-<p>entrada works!</p>
+
+<div class="container" *ngIf="user; else visitante">
+    <img src="../../../assets/imagenes/dashboard3.jpg">
+    <form [formGroup]="entrar"  class="mb-4">
+        <div class="input-group input-group-lg mt-4 mb-5">
+            <input type="text" [(ngModel)]="params.id" formControlName="id" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="id" placeholder="Introduce el id de reservacion">
+            
+        </div>
+        <div class="text-center form-group">
+            <button type="submit" class="btn btn-primary btn-lg" (click)="Valida()">Ingresar</button>
+        </div>
+        <p id="respuesta"></p>
+    </form>
+    
+</div>
+<ng-template #visitante>
+    <div class="container">
+        <img src="../../../assets/imagenes/dashboard2.jpg">
+        <form [formGroup]="entrar"  class="mb-4">
+            <div class="text-center form-group">
+                <button type="submit" class="btn btn-primary btn-lg" (click)="IngresaInvitado()">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</ng-template>

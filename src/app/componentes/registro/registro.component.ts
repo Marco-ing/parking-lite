@@ -21,9 +21,9 @@ export class RegistroComponent implements OnInit {
   constructor(private registroServicio: RegistrarseService ,private fb: FormBuilder, private router: Router, private servicio:AutenticarseSService) { }
 
   ngOnInit(): void {
-    
+
   }
-  
+
   //Formulario registrarse responsivo
   registrarse: FormGroup = this.fb.group({
     nombre          : ['',[Validators.required]],
@@ -37,7 +37,7 @@ export class RegistroComponent implements OnInit {
 
   //Funcion para validar campos
   campoEsValido(campo:string){
-    return this.registrarse.controls[campo].errors 
+    return this.registrarse.controls[campo].errors
     && this.registrarse.controls[campo].touched
   }
 
@@ -57,7 +57,7 @@ export class RegistroComponent implements OnInit {
         this.registrarse.value.numeroTarjeta,
         this.registrarse.value.titularTarjeta
     );
- 
+
     this.alta();
   }
 
@@ -71,5 +71,5 @@ export class RegistroComponent implements OnInit {
     this.router.navigate([redirect]); 
   }
 
- 
+
 }

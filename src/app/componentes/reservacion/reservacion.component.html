@@ -17,7 +17,7 @@
             <form [formGroup]="reservar" (ngSubmit)="Valida()">
               <div class="mb-3">
                 <label for="fechainicio" class="form-label" >Fecha de inicio</label>
-                <input type="date" [(ngModel)]="reser.finicio" formControlName="finicio" class="form-control" id="fechainicio" placeholder="name@example.com">
+                <input type="date" [(ngModel)]="reser.finicio" formControlName="finicio" class="form-control" id="fechainicio" min="{{date | date:'yyyy-MM-dd'}}" placeholder="name@example.com">
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label" >Fecha final</label>

@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class ReservacionComponent implements OnInit {
 
   reservar: FormGroup;
+  date: Date;
   submitted = false;
   reser = {
     finicio:null,
@@ -32,6 +33,7 @@ export class ReservacionComponent implements OnInit {
       hinicio:['',Validators.required],
       hfinal:['',Validators.required]
     });
+    this.date = new Date;
   }
 
   get f() { return this.reservar.controls;}
