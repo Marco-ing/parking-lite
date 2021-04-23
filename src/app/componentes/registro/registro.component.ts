@@ -64,8 +64,7 @@ export class RegistroComponent implements OnInit {
       if(datos['resultado']=='OK'){
         alert(datos['mensaje']);
       }
-    });
-     
+    }); 
   }
 
  
