@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Users } from 'src/app/Clases/Users';
 import { AutenticarseSService } from 'src/app/service/autenticarse-s.service';
 import { EditarPerfilService } from 'src/app/service/editar-perfil.service';
 import { PerfilService } from 'src/app/service/perfil.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editarperfil',
@@ -16,9 +17,10 @@ export class EditarperfilComponent implements OnInit {
     //Usuario a capturar
     UsuarioModificado:Users;
     Usuario:Users;
+    correo:String;
 
-    constructor(private ServicioPerfil: PerfilService ,private ServicioEditarPerfil: EditarPerfilService, private servicio:AutenticarseSService, 
-      private fb: FormBuilder) { }
+    constructor(private ServicioPerfil: PerfilService ,private ServicioEditarPerfil: EditarPerfilService, 
+      private servicio:AutenticarseSService,private fb: FormBuilder,private router: Router,private zone: NgZone) { }
   
     ngOnInit(): void {
       this.Usuario = JSON.parse(this.servicio.getToken());
@@ -73,6 +75,26 @@ export class EditarperfilComponent implements OnInit {
           alert(datos['mensaje']);
         }
       }); 
-      
     } 
+
+    /* ELIMINAR CUENTA */
+    eliminarCuenta(){
+      //alert(this.Usuario[4]);
+      this.correo = this.Usuario[4];
+      this.ServicioEditarPerfil.eliminar(this.correo).subscribe(datos => {
+        if(datos['resultado']=='OK'){
+          alert(datos['mensaje']);
+        }
+      });
+      //location.reload();
+      const redirect=this.servicio.redirectUrl ? this.servicio.redirectUrl: '/home';
+      this.router.navigate([redirect]);
+      this.CerrarSesion();
+    }
+
+    CerrarSesion(){
+      this.servicio.deleteToken();
+      this.zone.runOutsideAngular(() => {
+      });
+    }
 }

@@ -15,4 +15,7 @@ export class EditarPerfilService {
     return this.http.post<any>(this.URL+'EditarPerfil.php',(usuario));
   }
   
+  eliminar(correo:String){
+    return this.http.post<any>(this.URL+'EliminarPerfil.php',{correo});
+  }
 }

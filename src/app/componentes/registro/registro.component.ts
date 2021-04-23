@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { Users } from 'src/app/Clases/Users';
 
 import { stringify } from '@angular/compiler/src/util';
+import { Router } from '@angular/router';
+import { AutenticarseSService } from 'src/app/service/autenticarse-s.service';
 
 @Component({
   selector: 'app-registro',
@@ -16,7 +18,7 @@ export class RegistroComponent implements OnInit {
   //Usuario a capturar
   Usuario:Users;
 
-  constructor(private registroServicio: RegistrarseService ,private fb: FormBuilder) { }
+  constructor(private registroServicio: RegistrarseService ,private fb: FormBuilder, private router: Router, private servicio:AutenticarseSService) { }
 
   ngOnInit(): void {
     
@@ -65,7 +67,8 @@ export class RegistroComponent implements OnInit {
         alert(datos['mensaje']);
       }
     });
-     
+    const redirect=this.servicio.redirectUrl ? this.servicio.redirectUrl: '/autenticarse';
+    this.router.navigate([redirect]); 
   }
 
  
