@@ -5,3 +5,17 @@ img{
     width: 70%;
     margin-left: 15%;
 }
+.clock p {
+    display: inline;
+    margin: 10px;
+}
+.clock div{
+    display: inline-block;;
+}
+.ampm{
+    margin-left: 10px;
+}
+.clock{
+    margin-left: 35%;
+    font-size: 2em;
+}

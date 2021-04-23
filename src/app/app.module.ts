@@ -24,6 +24,7 @@ import { ReservacionComponent } from './componentes/reservacion/reservacion.comp
 import { ReservarService } from './service/reservar.service';
 //Registrarse
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { RelojService, valorReloj } from 'src/app/service/reloj.service';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { RegistroComponent } from './componentes/registro/registro.component';
   ],
   providers: [
     AutenticarseSService,
-    ReservarService
+    ReservarService,
+    RelojService
   ],
   bootstrap: [AppComponent]
 })

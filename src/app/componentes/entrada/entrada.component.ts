@@ -4,6 +4,8 @@ import { FormsModule, FormGroup, FormBuilder, Validators, NgForm, ReactiveFormsM
 import { AutenticarseSService } from 'src/app/service/autenticarse-s.service';
 import { IngresarService } from 'src/app/service/ingresar.service';
 import { first } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { RelojService, valorReloj } from '../../service/reloj.service';
 
 @Component({
   selector: 'app-entrada',
@@ -16,13 +18,30 @@ export class EntradaComponent implements OnInit {
   params = {
     id:null
   }
+
+  datos$: Observable<valorReloj>;
+  hora: number;
+  minutos: string;
+  dia: string;
+  fecha: string;
+  ampm: string;
+  segundos: string;
   
   public user:boolean;
 
   constructor(private autenticarse: AutenticarseSService,private http: HttpClient,
-    private FormBuilder: FormBuilder, private ingresar: IngresarService) { }
+    private FormBuilder: FormBuilder, private ingresar: IngresarService, private segundo: RelojService) { }
 
   ngOnInit(): void {
+    this.datos$=this.segundo.getInfoReloj();
+    this.datos$.subscribe(x => {
+      this.hora = x.hora;
+      this.minutos = x.minutos;
+      this.dia = x.diadesemana;
+      this.fecha = x.diaymes;
+      this.ampm = x.ampm;
+      this.segundos = x.segundo
+    });
     this.entrar=this.FormBuilder.group({
       id:['',Validators.required]
     });
