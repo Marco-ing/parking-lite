@@ -4,7 +4,7 @@ import {AutenticarseSService} from '../../service/autenticarse-s.service';
 import { FormsModule, FormGroup, FormBuilder, Validators, NgForm, ReactiveFormsModule} from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-autenticarse-form',
@@ -50,7 +50,12 @@ export class AutenticarseFormComponent implements OnInit {
     .subscribe(
       data =>{
         if(data[0].contrasenia==""){
-          alert("Contraseña incorrecta.");
+          Swal.fire({  
+            icon: 'error',  
+            title: 'Contraseña incorrecta',  
+            text: 'La contraseña que se introdujo es incorrecta.',  
+            confirmButtonText:'Aceptar'  
+          })  
         }
         else{
           const redirect=this.AutenticarseSService.redirectUrl ? this.AutenticarseSService.redirectUrl: '/home';
@@ -58,7 +63,12 @@ export class AutenticarseFormComponent implements OnInit {
         }
       },
       error => {
-        alert("Usurio no registrado.");
+        Swal.fire({  
+          icon: 'error',  
+          title: 'Usuario no registrado',  
+          text: 'EL correo electronico no esta registrado en Parking Lite.',  
+          confirmButtonText:'Aceptar'  
+        })  
       }
     );
   }

@@ -4,6 +4,7 @@ import { first } from 'rxjs/operators';
 import { MembresiaService } from 'src/app/service/membresia.service';
 import { FormsModule, FormGroup, FormBuilder, Validators, NgForm, ReactiveFormsModule} from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 const meses={
   days:['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo'],
@@ -67,7 +68,7 @@ export class MembresiaComponent implements OnInit {
   constructor(private calendar: NgbCalendar,private service:MembresiaService,private formbuilder:FormBuilder,private router:Router) {
     this.hoy=this.calendar.getNext(this.calendar.getToday(),'d',1);
     this.date=this.calendar.getNext(this.calendar.getToday(),'d',1);
-    this.datef=this.calendar.getNext(this.calendar.getToday(),'d',1);
+    this.datef=this.calendar.getNext(this.calendar.getToday(),'d',30);
     this.service.getTarifa()
     .pipe(first())
     .subscribe(data=>{
@@ -117,18 +118,28 @@ export class MembresiaComponent implements OnInit {
     this.service.insertMem(id,this.date,this.datef,this.total)
     .pipe(first())
     .subscribe(data=>{
-      alert("Membresia adquirida.\nId de membresia: "+data[0][0]+"\nCajon de estacionamiento: "+data[0][1]+"\nFecha de inicio: "+this.inicio+"\nFecha de vencimiento: "+this.final);
+      Swal.fire({
+        title: 'Membresia adquirida.',
+        html: "Id de membresia: "+data[0][0]+"<br>Cajon de estacionamiento: "+data[0][1]+"<br>Fecha de inicio: "+this.inicio+"<br>Fecha de vencimiento: "+this.final,
+        icon: 'success',
+        confirmButtonText:'Aceptar'
+      });
       const redirect=this.service.redirectUrl ? this.service.redirectUrl: '/home';
       this.router.navigate([redirect]);
     },
     error=>{
-      alert("No hay lugares disponibles para tu membresía.");
+      Swal.fire({
+        title:'Membresia rechazada.',
+        text:'Por el momento no contamos con lugares disponibles para tu membresia. Por favor intentalo más tarde.',
+        icon: 'error',
+        confirmButtonText:'Aceptar'
+      });
     });
   }
 
   onDateSelect($event){
     this.date=this.calendar.getNext($event,'d',0);
-    this.datef=this.calendar.getNext($event,'d',0);
+    this.datef=this.calendar.getNext($event,'d',30);
     this.inicio=meses['days'][this.calendar.getWeekday($event)-1]+" "+$event.day+" de "+meses['months'][$event.month-1]+" del "+$event.year;
     this.final=meses['days'][this.calendar.getWeekday(this.calendar.getNext($event,'d',29))-1]+" "+this.calendar.getNext($event,'d',29).day+" de "+meses['months'][this.calendar.getNext($event,'d',29).month-1]+" del "+this.calendar.getNext($event,'d',29).year;
   }
@@ -139,8 +150,28 @@ export class MembresiaComponent implements OnInit {
 
   Expiracion($event){
     var inputValue = (<HTMLInputElement>document.getElementById("expira")).value;
+    console.log($event);
+    if(inputValue.length==0){
+      if(Number($event.key)>1){
+        return false;
+      }
+    }
+    if(inputValue.length==1){
+      if(inputValue=="0" && $event.key=="0"){
+        return false;
+      }
+      if(inputValue=="1" && Number($event.key)>2){
+        return false;
+      }
+    }
     if(inputValue.length==2){
+      if(Number($event.key)<2){
+        return false;
+      }
       (<HTMLInputElement>document.getElementById("expira")).value=inputValue+"/";
+    }
+    if(inputValue.length==4 && inputValue[3]=="2" && Number($event.key)==0){
+      return false;
     }
     return ($event.charCode >= 48 && $event.charCode <= 57);
   }

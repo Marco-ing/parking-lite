@@ -27,8 +27,10 @@ export class AutenticarseSService {
   VerificarDatos(email,password){
     return this.httpClient.post<any>(this.baseURL+'Autenticarse.php',{email,password})
     .pipe(map(Users => {
-      this.setToken(JSON.stringify(Users[0]));
-      this.getLoggedInName.emit(true);
+      if(Users[0].contrasenia!=""){
+        this.setToken(JSON.stringify(Users[0]));
+        this.getLoggedInName.emit(true);
+      }
       return Users;
     }));
   }

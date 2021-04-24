@@ -11,12 +11,12 @@
     $fechaf=$params->aniof."-".$params->mesf."-".$params->diaf;
     $lugares=array();
     $lugar;
-    $membresias=mysqli_query($conexion,"SELECT IdEstacionamientoSocio FROM Membresia WHERE FechaInicio>='$fecha 00:00:00' and FechaFinal<='$fechaf 23:59:59'");
+    $membresias=mysqli_query($conexion,"SELECT IdEstacionamientoSocio FROM Membresia WHERE (FechaInicio>='$fecha 00:00:00' and FechaInicio<='$fechaf 23:59:59') or (FechaFinal>='$fecha 00:00:00' and FechaFinal<='$fechaf 23:59:59')");
     while($row=mysqli_fetch_array($membresias)){
         array_push($lugares,$row['IdEstacionamientoSocio']);
     }
     mysqli_free_result($membresias);
-    $membresias=mysqli_query($conexion,"SELECT IdEstacionamientoSocio FROM Reservacion WHERE FechaInicio>='$fecha 00:00:00' and FechaFinal<='$fechaf 23:59:59'");
+    $membresias=mysqli_query($conexion,"SELECT IdEstacionamientoSocio FROM Reservacion WHERE (FechaInicio>='$fecha 00:00:00' and FechaInicio<='$fechaf 23:59:59') or (FechaFinal>='$fecha 00:00:00' and FechaFinal<='$fechaf 23:59:59')");
     while($row=mysqli_fetch_array($membresias)){
         array_push($lugares,$row['IdEstacionamientoSocio']);
     }
