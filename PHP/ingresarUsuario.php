@@ -12,18 +12,26 @@
     if($params!=null){
         $query = "SELECT DATE(fechainicio), idestacionamientosocio FROM reservacion WHERE idreservacion = '$params->idreserv' AND idsocio = '$params->socio'";
         $res = mysqli_query($conexion,$query);
-        $id = mysqli_fetch_array($res);
-        $today = date("Y-m-d");
-        if($id[0] != $today){
-            $datos = 0;
+        if ($res->num_rows == 0){
+            $datos = 2;
         }
         else{
-            $query = "UPDATE estacionamientosocio SET estatus = 'Ocupado' WHERE idestacionamientosocio = '$id[1]'";
-            if(mysqli_query($conexion,$query)){
-                $datos=1;
+            if($id = mysqli_fetch_array($res)){
+                $today = date("Y-m-d");
+                if($id[0] != $today){
+                    $datos = 0;
+                }
+                else{
+                    $query = "UPDATE estacionamientosocio SET estatus = 'Ocupado' WHERE idestacionamientosocio = '$id[1]'";
+                    if(mysqli_query($conexion,$query)){
+                        $datos = 1;
+                    }
+                }
             }
         }
+        
         echo $datos;
     }
+    $conexion->close();
 
 ?>

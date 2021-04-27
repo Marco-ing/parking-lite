@@ -18,7 +18,6 @@ export class ReservacionComponent implements OnInit {
   submitted = false;
   reser = {
     finicio:null,
-    ffinal:null,
     hinicio:null,
     hfinal:null,
   }
@@ -29,7 +28,6 @@ export class ReservacionComponent implements OnInit {
   ngOnInit(): void {
     this.reservar=this.FormBuilder.group({
       finicio:['',Validators.required],
-      ffinal:['',Validators.required],
       hinicio:['',Validators.required],
       hfinal:['',Validators.required]
     });

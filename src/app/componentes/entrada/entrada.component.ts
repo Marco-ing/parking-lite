@@ -6,6 +6,7 @@ import { IngresarService } from 'src/app/service/ingresar.service';
 import { first } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { RelojService, valorReloj } from '../../service/reloj.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-entrada',
@@ -66,7 +67,12 @@ export class EntradaComponent implements OnInit {
     .subscribe(
       data=>{
         if(data.resultado != 0){
-          alert("¡Bienvenido! Su lugar asignado es el: "+data.lugar+". Su id para pagar es: "+data.resultado);
+          Swal.fire({  
+            icon: 'success',  
+            title: '¡Bienvenido!',  
+            text: 'Su lugar asignado es el: '+data.lugar+'. Su id para pagar es: '+data.resultado+'',  
+            confirmButtonText:'Aceptar'
+          })
         }
       }
     );
@@ -78,11 +84,29 @@ export class EntradaComponent implements OnInit {
     this.ingresar.IngresarUsuario(entrar.value.id,socio).pipe(first())
     .subscribe(
       data=>{
-        if(data == 0){
-          (<HTMLInputElement>document.getElementById("respuesta")).innerHTML = "Tu reservación no es para este día";
+        if(data == 1){
+          Swal.fire({  
+            icon: 'success',  
+            title: '¡Bienvenido!',  
+            text: 'Gracias por usar el servicio',  
+            confirmButtonText:'Aceptar'
+          }) 
         }
-        else{
-          alert("¡Bienvenido! Gracias por usar el servicio");
+        if(data == 0){
+          Swal.fire({  
+            icon: 'error',  
+            title: 'Error de Fecha',  
+            text: 'La reservación no es para el día de hoy',  
+            confirmButtonText:'Aceptar'
+          }) 
+        }
+        if(data == 2){
+          Swal.fire({  
+            icon: 'error',  
+            title: 'Error de id',  
+            text: 'No hay una reservación para este id '+entrar.value.id+'',  
+            confirmButtonText:'Aceptar'
+          }) 
         }
       }
     );

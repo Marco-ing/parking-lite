@@ -7,7 +7,7 @@ import { share } from 'rxjs/operators';
 })
 export class IngresarService {
 
-  URL = 'http://localhost/ParkingWeb/';
+  URL = 'http://localhost/parking-lite/PHP/';
   constructor(private http: HttpClient) { }
 
   IngresarUsuario(idreserv,socio){

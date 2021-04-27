@@ -10,8 +10,7 @@ import { share } from 'rxjs/operators';
 export class ReservarService {
 
   redirectUrl:string;
-  URL='http://localhost/ParkingWeb/';
-  baseURL:string='http://localhost/parking-lie/PHP/';
+  baseURL:string='http://localhost/parking-lite/PHP/';
 
   constructor(private http: HttpClient,private httpClient: HttpClient) { }
 
