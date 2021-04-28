@@ -13,6 +13,7 @@ import { EditarperfilComponent } from './componentes/editarperfil/editarperfil.c
 import { ReservacionesComponent } from './componentes/reservaciones/reservaciones.component';
 import { ReservacionComponent} from './componentes/reservacion/reservacion.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { MostrarEntradasComponent } from './componentes/mostrar-entradas/mostrar-entradas.component';
 
 
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'reservaciones', component: ReservacionesComponent},
   {path: 'agendarreservacion', component: ReservacionComponent},
   {path: 'registrarse', component: RegistroComponent},
+  {path: 'mostrar-entradas', component:MostrarEntradasComponent},
   {path: '**', pathMatch: 'full' ,redirectTo: 'home'}
 ];
 
