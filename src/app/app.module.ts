@@ -25,6 +25,7 @@ import { ReservarService } from './service/reservar.service';
 //Registrarse
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { RelojService, valorReloj } from 'src/app/service/reloj.service';
+import { MostrarEntradasComponent } from './componentes/mostrar-entradas/mostrar-entradas.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { RelojService, valorReloj } from 'src/app/service/reloj.service';
     EditarperfilComponent,
     ReservacionesComponent,
     ReservacionComponent,
-    RegistroComponent
+    RegistroComponent,
+    MostrarEntradasComponent
 
 
   ],
