@@ -26,6 +26,12 @@ import { ReservarService } from './service/reservar.service';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { RelojService, valorReloj } from 'src/app/service/reloj.service';
 import { MostrarEntradasComponent } from './componentes/mostrar-entradas/mostrar-entradas.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -44,8 +50,6 @@ import { MostrarEntradasComponent } from './componentes/mostrar-entradas/mostrar
     ReservacionComponent,
     RegistroComponent,
     MostrarEntradasComponent
-
-
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,14 @@ import { MostrarEntradasComponent } from './componentes/mostrar-entradas/mostrar
     HttpClientModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [
     AutenticarseSService,
@@ -63,3 +74,4 @@ import { MostrarEntradasComponent } from './componentes/mostrar-entradas/mostrar
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
