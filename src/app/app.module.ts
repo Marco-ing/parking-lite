@@ -55,7 +55,7 @@ import { AdministradorTarifaComponent } from './componentes/administrador-tarifa
     RegistroComponent,
     MostrarEntradasComponent,
     TablaMembresiaComponent,
-    TablaReservacionComponent
+    TablaReservacionComponent,
     AdministradorTarifaComponent
 
   ],
