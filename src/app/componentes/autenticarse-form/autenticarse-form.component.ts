@@ -58,8 +58,15 @@ export class AutenticarseFormComponent implements OnInit {
           })  
         }
         else{
-          const redirect=this.AutenticarseSService.redirectUrl ? this.AutenticarseSService.redirectUrl: '/home';
-          this.router.navigate([redirect]);
+          if(data[0].tipo=="Usuario"){
+            const redirect=this.AutenticarseSService.redirectUrl ? this.AutenticarseSService.redirectUrl: '/home';
+            this.router.navigate([redirect]);
+          }
+          else if(data[0].tipo=="Administrador"){
+            const redirect=this.AutenticarseSService.redirectUrl ? this.AutenticarseSService.redirectUrl: '/administrador';
+            this.router.navigate([redirect]);
+          }
+          
         }
       },
       error => {

@@ -7,11 +7,25 @@
     require("ConexionBD.php");
     $conexion = conexion();
     
-    $registros = mysqli_query($conexion, "SELECT idusuario,nombre,apaterno,amaterno,correo,contrasenia,numtarjeta,titulartarjeta,idsocio FROM usuario inner join socio on idusuario=idsocio where correo='$params->email'");    
+    $registros = mysqli_query($conexion, "SELECT * FROM usuario where Correo='$params->email'");    
     if ($resultado = mysqli_fetch_array($registros)) {
-        $datos[] = $resultado;
-        if($datos[0]['contrasenia']!=$params->password){
-            $datos[0]['contrasenia']="";
+        mysqli_free_result($registros);
+        $registros=mysqli_query($conexion,"SELECT idusuario,nombre,apaterno,amaterno,correo,contrasenia,numtarjeta,titulartarjeta FROM Usuario inner join Socio on IdUsuario=IdSocio WHERE Correo='$params->email'");
+        if($result=mysqli_fetch_array($registros)){
+            $datos[] = $result;
+            $datos[0]['tipo']="Usuario";
+            if($datos[0]['contrasenia']!=$params->password){
+                $datos[0]['contrasenia']="";
+            }      
+        }
+        mysqli_free_result($registros);
+        $registros=mysqli_query($conexion,"SELECT idusuario,nombre,apaterno,amaterno,correo,contrasenia FROM Usuario inner join Administrador on IdUsuario=IdAdministrador WHERE Correo='$params->email'");
+        if($result=mysqli_fetch_array($registros)){
+            $datos[] = $result;
+            $datos[0]['tipo']="Administrador";
+            if($datos[0]['contrasenia']!=$params->password){
+                $datos[0]['contrasenia']="";
+            }      
         }
     }
     $json = json_encode($datos);
