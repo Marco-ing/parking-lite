@@ -54,7 +54,7 @@ export class SalidaComponent implements OnInit {
     this.ingresar.RegistrarSalida(this.registrarSalida.value.idReserva,).pipe(first())
     .subscribe(
       data=>{
-        
+        alert(data);
         if(data == 1){
           Swal.fire({  
             icon: 'success',  
@@ -78,6 +78,14 @@ export class SalidaComponent implements OnInit {
             text: 'No hay una reserva en curso para este id '+this.registrarSalida.value.idReserva+'',  
             confirmButtonText:'Aceptar'
           }) 
+        }
+        if(data == 3){
+          Swal.fire({  
+            icon: 'error',  
+            title: 'Reserva ya finalizada!',  
+            text: 'Esta reserva ya fue finalizada!! '+this.registrarSalida.value.idReserva+'',  
+            confirmButtonText:'Aceptar'
+          })
         }
       }
     ); 

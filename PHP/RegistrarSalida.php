@@ -10,7 +10,7 @@
     $conexion = conexion();
 
     if($params!=null){
-        $query = "SELECT DATE(fechainicio) FROM reservacion WHERE idReservacion = '$params->idReserva'";
+        $query = "SELECT DATE(fechainicio) as FechaInicio, TIME(fechainicio) as HoraInicio, TIME (fechafinal) AS HoraFin FROM reservacion WHERE idReservacion = '$params->idReserva'";
         $res = mysqli_query($conexion,$query);
         if ($res->num_rows == 0){
             $datos = 2;
@@ -18,15 +18,20 @@
         else{
             if($id = mysqli_fetch_array($res)){
                 $today = date("Y-m-d");
-                if($id[0] != $today){
+                if($id['FechaInicio'] != $today){
                     $datos = 0;
                 }
                 else{
-                    $fecha = getdate();
-                    $insert = $fecha["year"]."-".$fecha["mon"]."-".$fecha["mday"]." ".$fecha["hours"].":".$fecha["minutes"].":".$fecha["seconds"];
-                    $query = "UPDATE reservacion SET FechaFinal='$insert' WHERE IdReservacion='$params->idReserva'";
-                    if(mysqli_query($conexion,$query)){
-                        $datos = 1;
+                    if($id['HoraFin']>$id['HoraInicio'] && $id['HoraFin']!="00:00:00" ){
+                        $datos = 3;
+                    }
+                    else{
+                        $fecha = getdate();
+                        $insert = $fecha["year"]."-".$fecha["mon"]."-".$fecha["mday"]." ".$fecha["hours"].":".$fecha["minutes"].":".$fecha["seconds"];
+                        $query = "UPDATE reservacion SET FechaFinal='$insert' WHERE IdReservacion='$params->idReserva'";
+                        if(mysqli_query($conexion,$query)){
+                            $datos = 1;
+                        }
                     }
                 }
             }
