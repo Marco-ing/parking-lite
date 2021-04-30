@@ -13,10 +13,6 @@
         $today = getdate();
         $newfecha = substr($params->finicio,-2);
 
-        if($newfecha < $today["mday"]){
-            $datos = 2;
-        }
-        else{
             if($params->hinicio < "05:00" || $params->hfinal < "05:00" || $params->hfinal > "23:00"){
                 $datos = 3;
             }
@@ -26,25 +22,17 @@
                 }
                 else{
                     $iniciofinal = $params->finicio." ".$params->hinicio;
-                    $final = $params->ffinal." ".$params->hfinal;
-
-                    $fechainicio = new datetime($params->finicio);
-                    $fechafinal = new datetime($params->ffinal);
-                    $intevalofechas = $fechafinal->diff($fechainicio);
-
-                    if($intevalofechas->d > 0){
-                        $calculo = (24*15*$intevalofechas->d);
-                    }
+                    $final = $params->finicio." ".$params->hfinal;
 
                     $horaInicio = new datetime($params->hinicio);
                     $horaTermino = new datetime($params->hfinal);
 
                     $interval = $horaInicio->diff($horaTermino);
                     if($interval->i > 0){
-                        $calculo += (15*($interval->h+1));
+                        $calculo += ($params->tarifa*($interval->h+1));
                     }
                     else{
-                        $calculo += (15*$interval->h);
+                        $calculo += ($params->tarifa*$interval->h);
                     }
 
                     $lugar = getLugares($iniciofinal,$final,$conexion);
@@ -57,7 +45,7 @@
                     }
                 }
             }
-        }
+        
         echo $datos;
     }
 
