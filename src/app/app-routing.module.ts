@@ -14,7 +14,9 @@ import { ReservacionesComponent } from './componentes/reservaciones/reservacione
 import { ReservacionComponent} from './componentes/reservacion/reservacion.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { MostrarEntradasComponent } from './componentes/mostrar-entradas/mostrar-entradas.component';
+import { AdministradorTarifaComponent } from './componentes/administrador-tarifa/administrador-tarifa.component';
 import { SalidaComponent } from './componentes/salida/salida.component';
+
 
 
 
@@ -31,8 +33,8 @@ const routes: Routes = [
   {path: 'agendarreservacion', component: ReservacionComponent},
   {path: 'registrarse', component: RegistroComponent},
   {path: 'mostrar-entradas', component:MostrarEntradasComponent},
-  {path: '**', pathMatch: 'full' ,redirectTo: 'home'},
-
+  {path: 'administrador', component:AdministradorTarifaComponent},
+  {path: '**', pathMatch: 'full' ,redirectTo: 'home'}
 ];
 
 @NgModule({

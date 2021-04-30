@@ -1,0 +1,29 @@
+table {
+    width: 100%;
+    background-color: #fff;
+    border: 3px #181b32 solid;
+    font-family: 'Principal', Arial, Helvetica, sans-serif;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    font-family: 'Principal', Arial, Helvetica, sans-serif;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 18%;
+  }
+  ::ng-deep .mat-select-value {
+    font-size: 15px;
+    font-family: 'Principal', Arial, Helvetica, sans-serif;
+  }
+  
+  ::ng-deep .mat-option-text {
+    font-size: 15px;
+    font-family: 'Principal', Arial, Helvetica, sans-serif;
+  }
+  .mat-paginator {
+    font-size: 15px;
+    font-family: 'Principal', Arial, Helvetica, sans-serif;
+  }

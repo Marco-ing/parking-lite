@@ -1,0 +1,32 @@
+.principal{
+    padding: 50px;
+    padding-top: 10px;
+    display: inline-flexbox;
+  }
+.info{
+    border: 2px #5aa897 solid;
+    border-radius: 25px;
+    padding: 30px;
+    margin-left: 30%;
+    width: 35%;
+}
+button{
+    float: right;
+    margin-top: -37px;
+}
+#caja{
+    width: 80%;
+}
+.clock{
+    float: left;
+    font-size: 3.5em;
+}
+.datos{
+    margin-top: 5%;
+}
+.pago{
+    font-size: 2em;
+    float: none;
+    margin-left: 80%;
+    margin-top: -30%;
+}

@@ -17,7 +17,7 @@
           <form [formGroup]="reservar" (ngSubmit)="Valida()">
             <div class="mb-3">
               <label for="fechainicio" class="form-label" >Fecha de inicio</label>
-              <input type="date" [(ngModel)]="reser.finicio" formControlName="finicio" class="form-control" id="fechainicio" min="{{date | date:'yyyy-MM-dd'}}" placeholder="name@example.com">
+              <input type="date"  [(ngModel)]="reser.finicio" formControlName="finicio" class="form-control" id="fechainicio" min="{{date | date:'yyyy-MM-dd'}}" placeholder="name@example.com">
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label" >Hora de inicio</label>
@@ -38,7 +38,7 @@
             <p class="text-center m-4 p__total" id="totalstring"></p>
             <div class="row">
               <div class="col-6">
-                <button class="btn btn-danger button_impro">Cancelar</button>
+                <button class="btn btn-danger button_impro" type="reset">Cancelar</button>
               </div>
               <div class="col-6">
                 <button type="submit" class="btn btn-primary button_impro">Reservar</button>
@@ -57,7 +57,7 @@
         <div class="card-body">
           <h5 class="card-title">Tarifa Actual</h5>
           <h6 class="card-subtitle mb-2 text-muted">Por 1 Hora y fraccion.</h6>
-          <p class="card-text">     $15   </p>
+          <p class="card-text">     ${{tarifa}}  </p>
           <a href="#" class="card-link">Consulta nuestras tarifas aqui</a><br>
           <small>* Nuestro horario de atención es de 5 am a 11 pm*</small>
   

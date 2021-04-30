@@ -32,7 +32,11 @@ import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import { TablaMembresiaComponent } from './componentes/tabla-membresia/tabla-membresia.component';
+import { TablaReservacionComponent } from './componentes/tabla-reservacion/tabla-reservacion.component';
+import { AdministradorTarifaComponent } from './componentes/administrador-tarifa/administrador-tarifa.component';
 import { SalidaComponent } from './componentes/salida/salida.component';
+
 
 
 @NgModule({
@@ -51,7 +55,11 @@ import { SalidaComponent } from './componentes/salida/salida.component';
     ReservacionComponent,
     RegistroComponent,
     MostrarEntradasComponent,
-    SalidaComponent
+    TablaMembresiaComponent,
+    TablaReservacionComponent,
+    AdministradorTarifaComponent,
+    SalidaComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -76,4 +84,3 @@ import { SalidaComponent } from './componentes/salida/salida.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
