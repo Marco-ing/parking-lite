@@ -41,7 +41,6 @@ export class SalidaComponent implements OnInit {
       this.minutos = x.minutos;
       this.dia = x.diadesemana.toUpperCase();
       this.fecha = x.diaymes.toUpperCase();
-      this.ampm = x.ampm;
       this.segundos = x.segundo
     });
   }
@@ -55,9 +54,7 @@ export class SalidaComponent implements OnInit {
     this.ingresar.RegistrarSalida(this.registrarSalida.value.idReserva,).pipe(first())
     .subscribe(
       data=>{
-        if(data['resultado']=='OK'){
-          alert(data['resultado']);
-        }
+        
         if(data == 1){
           Swal.fire({  
             icon: 'success',  
