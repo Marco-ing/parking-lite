@@ -1,0 +1,26 @@
+<div class="container container__tarifa">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="vinculo">
+        <div class="div__img">
+          <img src="../../../assets/imagenes/nota.png" alt="" class="text-center">
+        </div>
+        <a class="nav-link" [routerLink]="['../mostrar-entradas']">Registro de entradas y salidas.</a>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="tarifa">
+        <h3 class="text-center titulo-tarifa m-4">Actualizar tarifa: </h3>
+        <div class="input-group mb-3">
+          <span class="input-group-text">$</span>
+          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]="montoTarifa">
+          <span class="input-group-text">.00 MXN</span>
+        </div>
+        <button class="btn btn-primary btn-actualizar m-4" (click)="actualizarTarifa()">Actualizar</button>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -32,6 +32,7 @@ import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import { AdministradorTarifaComponent } from './componentes/administrador-tarifa/administrador-tarifa.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
     ReservacionesComponent,
     ReservacionComponent,
     RegistroComponent,
-    MostrarEntradasComponent
+    MostrarEntradasComponent,
+    AdministradorTarifaComponent
   ],
   imports: [
     BrowserModule,

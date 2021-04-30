@@ -14,6 +14,7 @@ export class AutenticarseSService {
   //Ruteo Marco Antonio
   //URL='http://localhost:81/parking-lite/PHP/';
   //baseURL:string='http://localhost:81/parking-lite/PHP/';
+
   URL='http://localhost/parking-lite/PHP/';
   baseURL:string='http://localhost/parking-lite/PHP/';
 
