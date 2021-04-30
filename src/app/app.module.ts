@@ -32,7 +32,10 @@ import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import { TablaMembresiaComponent } from './componentes/tabla-membresia/tabla-membresia.component';
+import { TablaReservacionComponent } from './componentes/tabla-reservacion/tabla-reservacion.component';
 import { AdministradorTarifaComponent } from './componentes/administrador-tarifa/administrador-tarifa.component';
+
 
 
 @NgModule({
@@ -51,7 +54,10 @@ import { AdministradorTarifaComponent } from './componentes/administrador-tarifa
     ReservacionComponent,
     RegistroComponent,
     MostrarEntradasComponent,
+    TablaMembresiaComponent,
+    TablaReservacionComponent
     AdministradorTarifaComponent
+
   ],
   imports: [
     BrowserModule,
