@@ -14,6 +14,7 @@ import { ReservacionesComponent } from './componentes/reservaciones/reservacione
 import { ReservacionComponent} from './componentes/reservacion/reservacion.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { MostrarEntradasComponent } from './componentes/mostrar-entradas/mostrar-entradas.component';
+import { SalidaComponent } from './componentes/salida/salida.component';
 
 
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'uso', component: UsoComponent},
   {path: 'entrada', component: EntradaComponent},
+  {path: 'salida', component: SalidaComponent},
   {path: 'cuenta', component: CuentaComponent},
   {path: 'autenticarse', component: AutenticarseFormComponent, canActivate: [AutenticarseGuard]},
   {path: 'membresia', component: MembresiaComponent},
@@ -29,7 +31,8 @@ const routes: Routes = [
   {path: 'agendarreservacion', component: ReservacionComponent},
   {path: 'registrarse', component: RegistroComponent},
   {path: 'mostrar-entradas', component:MostrarEntradasComponent},
-  {path: '**', pathMatch: 'full' ,redirectTo: 'home'}
+  {path: '**', pathMatch: 'full' ,redirectTo: 'home'},
+
 ];
 
 @NgModule({

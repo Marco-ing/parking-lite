@@ -1,0 +1,30 @@
+
+<div class="container-lg mx-auto p-3">
+    <div class="container-lg m-2">
+        <h1>Registrar Salida</h1>
+        <img src="../../../assets/imagenes/dashboard3.jpg">
+         <!-- Reloj -->
+         <div class="container text-center">
+            <h4>{{dia}} {{fecha}}
+            <span class="mishoras">{{hora}}:{{minutos}}</span>
+            <span class="segundos">:{{segundos}}</span>
+            <span class="ampm">{{ampm}}</span></h4>
+        </div>
+        <form (ngSubmit)="RegistrarSalida()" autocomplete="off" [formGroup]="registrarSalida">
+            <div class="form-group">
+                <label for="nombre"></label>
+                <input formControlName="idReserva" class="form-control" type="text" id="idReserva" placeholder="Ingresa tu ID de reserva">
+                <span   class="form-text text-danger"
+                        *ngIf="campoEsValido('idReserva')"
+                        >Ingresa un ID reserva valido.
+                </span>
+            </div>
+            <div class="d-grid gap-2">
+                <button  class="btn_registrarSalida mt-4" type="submit">Registrar Salida</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
