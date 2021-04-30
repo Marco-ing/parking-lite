@@ -5,6 +5,8 @@ import { AutenticarseSService } from 'src/app/service/autenticarse-s.service';
 import { EditarPerfilService } from 'src/app/service/editar-perfil.service';
 import { PerfilService } from 'src/app/service/perfil.service';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editarperfil',
@@ -75,7 +77,12 @@ export class EditarperfilComponent implements OnInit {
           alert(datos['mensaje']);
         }
       }); 
-    } 
+
+      /* SE VUELVE A LLAMAR EL MÉTODO DE AUTENTICACION PARA CARGAR LA NUEVA INFORMACION */
+      this.ActualizarInformacion();
+      this.ActualizarInformacion();
+    }
+ 
 
     /* ELIMINAR CUENTA */
     eliminarCuenta(){
@@ -96,5 +103,16 @@ export class EditarperfilComponent implements OnInit {
       this.servicio.deleteToken();
       this.zone.runOutsideAngular(() => {
       });
+    }
+
+    ActualizarInformacion(){
+      this.servicio.VerificarDatos(this.UsuarioModificado.correo,this.UsuarioModificado.password)
+      .subscribe(
+        data =>{
+            const redirect=this.servicio.redirectUrl ? this.servicio.redirectUrl: '/editar-perfil';
+            this.router.navigate([redirect]);
+        }
+      );
+      
     }
 }

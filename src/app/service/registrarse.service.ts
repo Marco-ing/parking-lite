@@ -8,12 +8,12 @@ import { Users } from '../Clases/Users';
 })
 
 export class RegistrarseService {
-  
+  //Cambie el puerto de ejecucion
   URL = 'http://localhost/parking-lite/PHP/';  //Direccion servidor PHP
 
   constructor(private http: HttpClient) { }
 
-  //Se envia solicitud post para registrar un nuevo usuario, se envia al usuario 
+  //Se envia solicitud post para registrar un nuevo usuario, se envia al usuario
   alta(usuario:Users){
     return this.http.post<any>(this.URL+'Registrarse.php',(usuario));
   }

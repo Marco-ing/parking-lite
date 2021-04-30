@@ -14,8 +14,8 @@ export class ReservarService {
 
   constructor(private http: HttpClient,private httpClient: HttpClient) { }
 
-  InsertarDatos(finicio,hinicio,hfinal,socio){
-    return this.httpClient.post<any>(this.baseURL+'Reservar.php',{finicio,hinicio,hfinal,socio})
+  InsertarDatos(finicio,hinicio,hfinal,socio,tarifa){
+    return this.httpClient.post<any>(this.baseURL+'Reservar.php',{finicio,hinicio,hfinal,socio,tarifa})
     .pipe(share());
   }
 

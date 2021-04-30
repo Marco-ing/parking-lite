@@ -34,6 +34,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { TablaMembresiaComponent } from './componentes/tabla-membresia/tabla-membresia.component';
 import { TablaReservacionComponent } from './componentes/tabla-reservacion/tabla-reservacion.component';
+import { AdministradorTarifaComponent } from './componentes/administrador-tarifa/administrador-tarifa.component';
+
 
 
 @NgModule({
@@ -54,6 +56,8 @@ import { TablaReservacionComponent } from './componentes/tabla-reservacion/tabla
     MostrarEntradasComponent,
     TablaMembresiaComponent,
     TablaReservacionComponent
+    AdministradorTarifaComponent
+
   ],
   imports: [
     BrowserModule,

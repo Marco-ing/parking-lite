@@ -1,1 +1,32 @@
-<p>cuenta works!</p>
+<div class="principal">
+    <div class="clock">
+        <p>{{dia}}</p>
+        <p>{{fecha}}</p>
+        <div class="hours">
+            <div class="horas">
+                <span class="mishoras">{{hora}}:{{minutos}}</span>
+                <span class="segundos">:{{segundos}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="info">
+        
+        <div class="mb-2">
+            <form [formGroup]="dataventa">
+                <input type="text" class="form-control" id="caja" formControlName="id" placeholder="ID de entrada">
+                <button type="submit" class="btn btn-primary button_impro" (click)="Salir()">Salir</button>
+            </form>
+        </div>
+        <div class="datos">
+            <label id="entrada">Hora de entrada: </label><br><br>
+            <label id="salida">Hora de salida: </label><br><br>
+            <label id="horas">Número de horas: </label><br><br>
+            <label id="monto">Monto: $</label>
+        </div>
+        <br><br><br>
+        <small>*Tarifa Actual: ${{tarifa}} por hora o fracción</small>
+    </div>
+    <div class="pagar">
+        <button class="btn btn-primary pago" (click)="Pagar()">Pagar</button>
+    </div>
+</div>

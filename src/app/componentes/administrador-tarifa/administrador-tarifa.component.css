@@ -1,0 +1,31 @@
+.container__tarifa{
+  min-height: 800px;
+}
+
+.vinculo{
+  border: 3px #181b32 solid;
+  border-radius: 25px;
+  padding: 50px;
+  margin: 100px;
+  background-color: #fff;
+}
+.tarifa{
+  margin: 100px;
+  padding: 50px;
+}
+.div__img{
+  padding: 40px;
+}
+.div__img img{
+  object-fit: contain;
+  width: 200px;
+  height: 200px;
+  margin-left:40px;
+  margin-right: 40px;
+}
+.titulo-tarifa{
+  font-size:40px;
+}
+.btn-actualizar{
+  width: 80%;
+}
