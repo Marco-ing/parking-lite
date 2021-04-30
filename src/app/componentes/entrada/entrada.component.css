@@ -1,16 +1,18 @@
 .container{
     width: 50%;
+    margin-top: 10px;
 }
 img{
     width: 70%;
     margin-left: 15%;
+    margin-bottom: 10px;
 }
 .clock p {
     display: inline;
     margin: 10px;
 }
 .clock div{
-    display: inline-block;;
+    display: inline-block;
 }
 .ampm{
     margin-left: 10px;

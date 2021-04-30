@@ -17,7 +17,7 @@
                 <form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="perfil">
                     <div class="form-group m-2">
                         <label for="nombre">Nombre:</label>
-                        <input formControlName="nombre" class="form-control" type="text" id="nombre" placeholder="{{Usuario[1]}}">
+                        <input formControlName="nombre" class="form-control" type="text" id="nombre">
                         <span   class="form-text text-danger"
                                 *ngIf="campoEsValido('nombre')"
                                 >Ingresa tu nombre
@@ -25,7 +25,7 @@
                     </div>
                     <div class="form-group m-2">
                         <label for="apellido-paterno">Apellido Paterno</label>
-                        <input formControlName="apellidoPaterno" class="form-control" type="text" id="apellido-paterno"placeholder="{{Usuario[2]}}">
+                        <input formControlName="apellidoPaterno" class="form-control" type="text" id="apellido-paterno">
                         <span   class="form-text text-danger" 
                                 *ngIf="campoEsValido('apellidoPaterno')"
                                 >Ingresa tu apellido paterno
@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group m-2">
                         <label for="apellido-materno">Apellido Materno</label>
-                        <input formControlName="apellidoMaterno" class="form-control" type="text" id="apellido-materno"placeholder="{{Usuario[3]}}">
+                        <input formControlName="apellidoMaterno" class="form-control" type="text" id="apellido-materno">
                         <span   class="form-text text-danger" 
                                 *ngIf="campoEsValido('apellidoMaterno')"
                                 >Ingresa tu apellido materno
@@ -59,7 +59,7 @@
                     <!--NUMERO TARJETA-->
                     <div class="form-group m-2">
                         <label  for="numeroTarjeta">Numero Tarjeta</label>
-                        <input  formControlName="numeroTarjeta" class="form-control" type="text" id="numeroTarjeta" placeholder="{{Usuario[6]}}">
+                        <input  formControlName="numeroTarjeta" class="form-control" type="text" id="numeroTarjeta">
                         <span   class="form-text text-danger"
                                 *ngIf="campoEsValido('numeroTarjeta')"
                                 >Ingresa una tarjeta valida
@@ -68,7 +68,7 @@
                     <!--TITULAR TARJETA-->
                     <div class="form-group m-2">
                         <label  for="titularTarjeta">Titular Tarjeta</label>
-                        <input  formControlName="titularTarjeta" class="form-control" type="text" id="titularTarjeta" placeholder="{{Usuario[7]}}">
+                        <input  formControlName="titularTarjeta" class="form-control" type="text" id="titularTarjeta">
                         <span   class="form-text text-danger"
                                 *ngIf="campoEsValido('titularTarjeta')"
                                 >Ingresa el titular de la tarjeta
