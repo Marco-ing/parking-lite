@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {ReservarService} from '../../service/reservar.service';
 import {AutenticarseSService} from '../../service/autenticarse-s.service';
+import {ObtenerTarifaHoraService} from '../../service/obtener-tarifa-hora.service';
 import { FormsModule, FormGroup, FormBuilder, Validators, NgForm, ReactiveFormsModule} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reservacion',
@@ -16,6 +18,7 @@ export class ReservacionComponent implements OnInit {
   reservar: FormGroup;
   date: Date;
   submitted = false;
+  tarifa: number;
   reser = {
     finicio:null,
     hinicio:null,
@@ -23,7 +26,7 @@ export class ReservacionComponent implements OnInit {
   }
 
   constructor(private ReservarService: ReservarService,private servicio: AutenticarseSService,private http: HttpClient,
-    private FormBuilder: FormBuilder, private router: Router) { }
+    private FormBuilder: FormBuilder, private router: Router, private sTarifa: ObtenerTarifaHoraService) { }
 
   ngOnInit(): void {
     this.reservar=this.FormBuilder.group({
@@ -32,6 +35,10 @@ export class ReservacionComponent implements OnInit {
       hfinal:['',Validators.required]
     });
     this.date = new Date;
+    this.sTarifa.getTarifa().pipe(first())
+    .subscribe(data=>{
+      this.tarifa=data[0].TarifaHora;
+    });
   }
 
   get f() { return this.reservar.controls;}
@@ -46,21 +53,36 @@ export class ReservacionComponent implements OnInit {
   Insertar(reservar):void{
     var a=JSON.parse(this.servicio.getToken());
     var socio = a.idsocio;
-    this.ReservarService.InsertarDatos(reservar.value.finicio,reservar.value.hinicio,reservar.value.hfinal,socio)
+    this.ReservarService.InsertarDatos(reservar.value.finicio,reservar.value.hinicio,reservar.value.hfinal,socio,this.tarifa)
     .pipe(first())
     .subscribe(
         data =>{
           if(data == 1){
-            alert("La reservación se agendó correctamente");
+            Swal.fire({  
+              icon: 'success',  
+              title: 'Éxito',  
+              text: 'La reservación se agendó correctamente',  
+              confirmButtonText:'Aceptar'
+            })
           }
           if(data == 2){
             alert("La fecha de inicio no puede ser menor al día de hoy");
           }
           if(data == 3){
-            alert("La hora de entrada o salida no coincide con nuestro horario de atención");
+            Swal.fire({  
+              icon: 'error',  
+              title: 'Error',  
+              text: 'La hora de entrada o salida no coincide con nuestro horario de atención',  
+              confirmButtonText:'Aceptar'
+            })
           }
           if(data == 4){
-            alert("La hora de salida no puede ser menor que la de entrada");
+            Swal.fire({  
+              icon: 'error',  
+              title: 'Error',  
+              text: 'La hora de salida no puede ser menor que la de entrada',  
+              confirmButtonText:'Aceptar'
+            })
           }
         }
       );

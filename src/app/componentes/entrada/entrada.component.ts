@@ -25,7 +25,6 @@ export class EntradaComponent implements OnInit {
   minutos: string;
   dia: string;
   fecha: string;
-  ampm: string;
   segundos: string;
   
   public user:boolean;
@@ -40,7 +39,6 @@ export class EntradaComponent implements OnInit {
       this.minutos = x.minutos;
       this.dia = x.diadesemana;
       this.fecha = x.diaymes;
-      this.ampm = x.ampm;
       this.segundos = x.segundo
     });
     this.entrar=this.FormBuilder.group({

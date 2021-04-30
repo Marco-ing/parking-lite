@@ -8,7 +8,6 @@ import {map, shareReplay} from 'rxjs/operators';
 export class valorReloj {
   hora: number;
   minutos: string;
-  ampm: string;
   diadesemana: string;
   diaymes: string;
   segundo: string;
@@ -17,7 +16,6 @@ export class RelojService {
   clock: Observable <Date>;
   infofecha$ = new Subject<valorReloj>();
   vr: valorReloj;
-  ampm: string;
   hours: number;
   minute: string;
   weekday: string;
@@ -30,12 +28,10 @@ export class RelojService {
    }
    getInfoReloj(): Observable<valorReloj>{
      this.clock.subscribe(t => {
-      this.hours = t.getHours() % 12;
-      this.hours = this.hours ? this.hours : 12;
+      this.hours = t.getHours();
        this.vr = {
          hora: this.hours,
          minutos: (t.getMinutes() < 10) ? '0' + t.getMinutes() : t.getMinutes().toString(),
-         ampm: t.getHours() > 11 ? 'PM' : 'AM',
          diaymes: t.toLocaleString('es-MX', { day: '2-digit', month: 'long' }).replace('.', '').replace('-', ' '),
          diadesemana: t.toLocaleString('es-MX', { weekday: 'long' }).replace('.', ''),
          segundo: t.getSeconds() < 10 ? '0' + t.getSeconds() : t.getSeconds().toString()
