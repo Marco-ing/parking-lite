@@ -1,0 +1,60 @@
+<div class="container mt-5 mb-5">
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter2($event)" placeholder="Ex. Mia" #input>
+      </mat-form-field>
+      
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource2" matSort>
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID Reservacion</th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          </ng-container>
+      
+          <!-- Progress Column -->
+          <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+            <td mat-cell *matCellDef="let row"> {{row.fecha}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="horainicio">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Hora Inicio </th>
+            <td mat-cell *matCellDef="let row"> {{row.horainicio}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="horafinal">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Hora Inicio </th>
+            <td mat-cell *matCellDef="let row"> {{row.horafinal}} </td>
+          </ng-container>
+  
+          <!-- Color Column -->
+          <ng-container matColumnDef="monto">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Monto </th>
+            <td mat-cell *matCellDef="let row"> ${{row.monto}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="idsocio">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id Socio </th>
+            <td mat-cell *matCellDef="let row"> {{row.idsocio}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="idestacionamiento">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Lugar </th>
+            <td mat-cell *matCellDef="let row"> {{row.idestacionamiento}} </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+      
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+      
+        <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]"></mat-paginator>
+      </div>
+      
+  </div>
