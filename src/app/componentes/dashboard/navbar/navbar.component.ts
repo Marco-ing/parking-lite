@@ -13,6 +13,12 @@ export class NavbarComponent implements OnInit {
   public registrarse:Boolean;
   public cerrarsesion:Boolean;
   public user:Boolean;
+  public modouso:Boolean;
+  public registrarentrada:Boolean;
+  public regisentradas:Boolean;
+  public tarifas:Boolean;
+  public pagarcuenta: Boolean;
+  public iniciarsesion:Boolean;
   public nombre:string;
 
   constructor(private servicio:AutenticarseSService, private zone: NgZone, private ocultar:OcultarBarraService) { }
@@ -20,19 +26,45 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.servicio.getLoggedInName.subscribe(data =>{
       if(data){
-        this.autenticarse=true;
-        this.registrarse=true;
-        this.cerrarsesion=true;
-        this.user=true;
         var a=JSON.parse(this.servicio.getToken());
-        this.nombre=a.nombre;
+        console.log(a.tipo);
+        if(a.tipo=="Usuario"){
+          this.autenticarse=true;
+          this.registrarse=true;
+          this.cerrarsesion=true;
+          this.user=true;
+          this.nombre=a.nombre;
+          this.regisentradas=false;
+          this.tarifas=false;
+          this.iniciarsesion=false;
+          this.pagarcuenta=true;
+          console.log("weferf");
+        }else if(a.tipo=="Administrador"){
+          this.autenticarse=false;
+          this.registrarse=true;
+          this.cerrarsesion=true;
+          this.user=true;
+          this.nombre=a.nombre;
+          this.regisentradas=true;
+          this.tarifas=true;
+          this.registrarentrada=true;
+          this.modouso=true;
+          this.iniciarsesion=false;
+          this.pagarcuenta=false;
+        }
       }
       else{
+        this.registrarentrada=false;
+        this.modouso=false;
         this.autenticarse=false;
         this.registrarse=false;
         this.cerrarsesion=false;
         this.user=false;
         this.nombre="";
+        this.regisentradas=false;
+        this.tarifas=false;
+        this.iniciarsesion=true;
+          this.pagarcuenta=true;
       }
       this.MostrarBarra=false;
     })

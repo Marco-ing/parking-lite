@@ -16,11 +16,9 @@ export class AutenticarseGuard implements CanActivate {
   }
   
   isLogin(routerurl){
-    console.log(localStorage.getItem("token"));
     if(!localStorage.getItem("token")){
       this.ocultar.login.emit(true);
       return true;
-
     }
     this.ocultar.redirectUrl=routerurl;
     this.rotue.navigate(['/home'],{queryParams: {returnUrl:routerurl}});
