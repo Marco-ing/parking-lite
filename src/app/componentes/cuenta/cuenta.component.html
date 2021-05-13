@@ -1,16 +1,15 @@
 <div class="principal">
-    <div class="clock">
-        <p>{{dia}}</p>
-        <p>{{fecha}}</p>
-        <div class="hours">
-            <div class="horas">
-                <span class="mishoras">{{hora}}:{{minutos}}</span>
-                <span class="segundos">:{{segundos}}</span>
+    <div class="info">
+        <div class="clock">
+            <p>{{dia}}</p>
+            <p>{{fecha}}</p>
+            <div class="hours">
+                <div class="horas">
+                    <span class="mishoras">{{hora}}:{{minutos}}</span>
+                    <span class="segundos">:{{segundos}}</span>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="info">
-        
         <div class="mb-2">
             <form [formGroup]="dataventa">
                 <input type="text" class="form-control" id="caja" formControlName="id" placeholder="ID de entrada">
@@ -26,6 +25,7 @@
         <br><br><br>
         <small>*Tarifa Actual: ${{tarifa}} por hora o fracción</small>
     </div>
+    
     <div class="pagar">
         <button class="btn btn-primary pago" (click)="Pagar()">Pagar</button>
     </div>

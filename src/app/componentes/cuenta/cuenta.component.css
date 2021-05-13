@@ -17,9 +17,15 @@ button{
 #caja{
     width: 80%;
 }
+.clock p {
+    display: inline;
+    margin: 8px;
+}
+.clock div{
+    display: inline-block;
+}
 .clock{
-    float: left;
-    font-size: 3.5em;
+    font-size: 1em;
 }
 .datos{
     margin-top: 5%;
