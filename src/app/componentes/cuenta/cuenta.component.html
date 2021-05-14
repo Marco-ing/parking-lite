@@ -1,6 +1,7 @@
 <div class="principal">
     <div class="info">
         <div class="clock">
+            <i class="fa fa-calendar" aria-hidden="true" style="right:12px;top:12px;"></i>
             <p>{{dia}}</p>
             <p>{{fecha}}</p>
             <div class="hours">
@@ -17,16 +18,16 @@
             </form>
         </div>
         <div class="datos">
-            <label id="entrada">Hora de entrada: </label><br><br>
-            <label id="salida">Hora de salida: </label><br><br>
-            <label id="horas">Número de horas: </label><br><br>
-            <label id="monto">Monto: $</label>
+            <label id="entrada"><i class="fa fa-clock-o" aria-hidden="true" style="right:12px;top:12px;"></i> Hora de entrada: </label><br><br>
+            <label id="salida"><i class="fa fa-clock-o" aria-hidden="true" style="right:12px;top:12px;"></i> Hora de salida: </label><br><br>
+            <label id="horas"> <i class="fa fa-hourglass-end" aria-hidden="true" style="right:12px;top:12px;"></i>  Número de horas: </label><br><br>
+            <label id="monto"> <i class="fa  fa-money" aria-hidden="true" style="right:12px;top:12px;"></i>  Monto:   $</label>
         </div>
         <br><br><br>
         <small>*Tarifa Actual: ${{tarifa}} por hora o fracción</small>
     </div>
     
     <div class="pagar">
-        <button class="btn btn-primary pago" (click)="Pagar()">Pagar</button>
+        <button class="btn btn-primary pago" (click)="Pagar()"><i class="fa fa-usd" aria-hidden="true"></i> Pagar</button>
     </div>
 </div>
