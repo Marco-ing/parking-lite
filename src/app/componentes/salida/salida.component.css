@@ -1,9 +1,11 @@
-.container {
+.container{
   width: 50%;
+  margin-top: 10px;
 }
-img {
+img{
   width: 70%;
   margin-left: 15%;
+  margin-bottom: 10px;
 }
 .clock p {
   display: inline;

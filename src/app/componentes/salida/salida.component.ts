@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { first } from 'rxjs/operators';
 import { SalidaService } from 'src/app/service/salida.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-salida',
@@ -22,7 +23,8 @@ export class SalidaComponent implements OnInit {
  
 
   constructor(private autenticarse: AutenticarseSService,private http: HttpClient,
-    private FormBuilder: FormBuilder, private ingresar: SalidaService, private segundo: RelojService) { }
+    private FormBuilder: FormBuilder, private ingresar: SalidaService, private segundo: RelojService,
+    private titleService: Title) { }
 
     datos$: Observable<valorReloj>;
     hora: number;
@@ -43,6 +45,7 @@ export class SalidaComponent implements OnInit {
       this.fecha = x.diaymes.toUpperCase();
       this.segundos = x.segundo
     });
+    this.titleService.setTitle("Registrar Salida");
   }
   //Funcion para validar campos
   campoEsValido(campo:string){

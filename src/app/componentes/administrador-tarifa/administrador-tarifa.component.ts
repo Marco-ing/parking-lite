@@ -1,6 +1,7 @@
 import { MostrarEntradasComponent } from './../mostrar-entradas/mostrar-entradas.component';
 import { Component, OnInit } from '@angular/core';
 import { TarifaService } from '../../service/tarifa.service';
+import { Title } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,13 +12,15 @@ import Swal from 'sweetalert2';
 export class AdministradorTarifaComponent implements OnInit {
 
   montoTarifa: number;
-  constructor(private service: TarifaService) { }
+  constructor(private service: TarifaService,
+    private titleService: Title) { }
 
   ngOnInit(): void {
     this.service.mostrarTarifa()
     .subscribe(data=>{
       this.montoTarifa=data[0].TarifaHora;
     });
+    this.titleService.setTitle("Administrador");
   }
 
   actualizarTarifa(){

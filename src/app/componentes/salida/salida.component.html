@@ -1,30 +1,28 @@
-
-<div class="container-lg mx-auto p-3">
-    <div class="container-lg m-2">
-        <h1>Registrar Salida</h1>
-        <img src="../../../assets/imagenes/dashboard3.jpg">
-         <!-- Reloj -->
-         <div class="container text-center">
-            <h4>{{dia}} {{fecha}}
+<div class="container">
+    <img src="../../../assets/imagenes/dashboard3.jpg">
+    <!-- Reloj -->
+    <div class="container text-center">
+        <h4>{{dia}} {{fecha}}
             <span class="mishoras">{{hora}}:{{minutos}}</span>
             <span class="segundos">:{{segundos}}</span>
-            <span class="ampm">{{ampm}}</span></h4>
-        </div>
-        <form (ngSubmit)="RegistrarSalida()" autocomplete="off" [formGroup]="registrarSalida">
-            <div class="form-group">
-                <label for="nombre"></label>
-                <input formControlName="idReserva" class="form-control" type="text" id="idReserva" placeholder="Ingresa tu ID de reserva">
-                <span   class="form-text text-danger"
-                        *ngIf="campoEsValido('idReserva')"
-                        >Ingresa un ID reserva valido.
-                </span>
-            </div>
-            <div class="d-grid gap-2">
-                <button  class="btn_registrarSalida mt-4" type="submit">Registrar Salida</button>
-            </div>
-        </form>
+            <span class="ampm">{{ampm}}</span>
+        </h4>
     </div>
+    <form (ngSubmit)="RegistrarSalida()" autocomplete="off" [formGroup]="registrarSalida">
+        <div class="form-group" class="mb-4">
+            <div class="input-group input-group-lg mt-4 mb-5">
+                <input formControlName="idReserva" class="form-control" type="text" id="idReserva" class="form-control "
+                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"
+                    placeholder="Introduce el id de reservacion">
+                <span style="position:absolute; right:8px;top:15px;" class="fa fa-sign-out"></span>
+            </div>
+
+            <span class="form-text text-danger" *ngIf="campoEsValido('idReserva')">Ingresa un ID reserva valido.
+            </span>
+        </div>
+
+        <div class="text-center form-group"><button class="btn btn-primary btn-lg" type="submit">Registrar
+                Salida</button></div>
+        <p id="respuesta"></p>
+    </form>
 </div>
-
-
-

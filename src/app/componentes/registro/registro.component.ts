@@ -7,6 +7,8 @@ import { Users } from 'src/app/Clases/Users';
 import { stringify } from '@angular/compiler/src/util';
 import { Router } from '@angular/router';
 import { AutenticarseSService } from 'src/app/service/autenticarse-s.service';
+import { Title } from '@angular/platform-browser';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -18,10 +20,12 @@ export class RegistroComponent implements OnInit {
   //Usuario a capturar
   Usuario:Users;
 
-  constructor(private registroServicio: RegistrarseService ,private fb: FormBuilder, private router: Router, private servicio:AutenticarseSService) { }
+  constructor(private registroServicio: RegistrarseService ,private fb: FormBuilder, 
+    private router: Router, private servicio:AutenticarseSService,
+    private titleService: Title) { }
 
   ngOnInit(): void {
-
+    this.titleService.setTitle("Registro");
   }
 
   //Formulario registrarse responsivo
@@ -62,14 +66,30 @@ export class RegistroComponent implements OnInit {
   }
 
   alta(){
-    this.registroServicio.alta(this.Usuario).subscribe(datos => {
-      if(datos['resultado']=='OK'){
-        alert(datos['mensaje']);
+    Swal.fire({
+      title: "Registrar usuario",
+      text: '¿Desea continuar?',
+      showCancelButton: true,
+      confirmButtonText: 'Continuar',
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.registroServicio.alta(this.Usuario).subscribe(datos => {
+          if(datos['resultado']=='OK'){
+            Swal.fire({  
+              icon: 'success',  
+              title: 'Éxito',  
+              text: datos['mensaje'],  
+              confirmButtonText:'Aceptar'
+            }).then((result) => {
+              if(result.isConfirmed){
+                const redirect=this.servicio.redirectUrl ? this.servicio.redirectUrl: '/autenticarse';
+                this.router.navigate([redirect]); 
+              }
+            })
+          }
+        });
       }
-    });
-    const redirect=this.servicio.redirectUrl ? this.servicio.redirectUrl: '/autenticarse';
-    this.router.navigate([redirect]); 
+    }) 
   }
-
-
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild,Injectable } from '@angular/core';
 import { TablaMembresiaComponent } from '../tabla-membresia/tabla-membresia.component';
 import { TablaReservacionComponent } from '../tabla-reservacion/tabla-reservacion.component';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -10,13 +11,9 @@ import { TablaReservacionComponent } from '../tabla-reservacion/tabla-reservacio
 })
 export class MostrarEntradasComponent implements OnInit, AfterViewInit{
 
+  constructor(private titleService: Title) {}
   ngOnInit(): void {
-    
-  }
-  
-
-  constructor() {
-    
+    this.titleService.setTitle("Registro de Entradas");
   }
 
   ngAfterViewInit() {

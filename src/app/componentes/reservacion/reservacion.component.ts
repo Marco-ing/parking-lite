@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-reservacion',
@@ -26,7 +27,8 @@ export class ReservacionComponent implements OnInit {
   }
 
   constructor(private ReservarService: ReservarService,private servicio: AutenticarseSService,private http: HttpClient,
-    private FormBuilder: FormBuilder, private router: Router, private sTarifa: ObtenerTarifaHoraService) { }
+    private FormBuilder: FormBuilder, private router: Router, private sTarifa: ObtenerTarifaHoraService,
+    private titleService: Title) { }
 
   ngOnInit(): void {
     this.reservar=this.FormBuilder.group({
@@ -39,6 +41,7 @@ export class ReservacionComponent implements OnInit {
     .subscribe(data=>{
       this.tarifa=data[0].TarifaHora;
     });
+    this.titleService.setTitle("Reservar");
   }
 
   get f() { return this.reservar.controls;}

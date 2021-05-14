@@ -7,16 +7,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item" *ngIf="!modouso">
-            <a class="nav-link" aria-current="page" [routerLink]="['uso']" routerLinkActive="active">Modo de Uso</a>
-          </li>
           <li class="nav-item" *ngIf="!registrarentrada">
             <a class="nav-link" [routerLink]="['entrada']" routerLinkActive="active">Registrar Entrada</a>
           </li>
           <li class="nav-item" *ngIf="autenticarse">
             <a class="nav-link" [routerLink]="['salida']" routerLinkActive="active">Registrar Salida</a>
           </li>
-          <li class="nav-item" *ngIf="pagarcuenta">
+          <li class="nav-item" *ngIf="!autenticarse && !tarifas">
             <a class="nav-link" [routerLink]="['cuenta']" routerLinkActive="active">Pagar Cuenta</a>
           </li>
                     <!-- Navegacion sobre Mis reservaciones/cancelar reservacion -->
@@ -35,9 +32,6 @@
           <li class="nav-link" *ngIf="tarifas">
             <a class="nav-link" [routerLink]="['administrador']" routerLinkActive="active">Actualizar tarifas</a>
           </li>
-
-                    <!-- Navegacion sobre mis reservaciones/cancelar reservacion-->
-
         </ul>
         <form class="d-flex">
           <ul class="navbar-nav me-auto mt-2 mb-lg-0">

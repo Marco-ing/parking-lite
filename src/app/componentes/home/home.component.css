@@ -6,13 +6,11 @@
   /*background: linear-gradient(rgba(0,0,0,.50) 0%, rgba(0,0,0,.50) 100%), url(../../../assets/imagenes/dashboard2.jpg);*/
   background-position: center center;
   background-size: cover;
-  margin-bottom: 3.12em;
-  
-
+  margin-bottom: 1em;
 }
 .div__descripcion{
-  margin-top:200px;
-  margin-bottom: 100px;
+  margin-top:90px;
+  margin-bottom: 90px;
 }
 .div__descripcion h1{
   color: #181b32;
@@ -21,13 +19,13 @@
   font-size: 20px;
   color: #39bdee;
 }
-
 .card__img{
   border-radius:20px;
 }
 .h3__servicios{
   color: #181b32;
   margin-bottom: 20px;
+  padding-left: 38%;
 }
 .titulos__servicios{
   color: #39bdee;
@@ -45,7 +43,7 @@
 }
 .div_img img{
   width: 100%;
-  height: 100%;
+  height: 80%;
   object-fit: cover;
   padding: 20px;
   border-radius: 35px;

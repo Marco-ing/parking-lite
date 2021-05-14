@@ -1,10 +1,18 @@
-
 <div class="container" *ngIf="user; else visitante">
     <img src="../../../assets/imagenes/dashboard3.jpg">
-    <form [formGroup]="entrar"  class="mb-4">
+    <div class="container text-center">
+        <h4>{{dia}} {{fecha}}
+            <span class="mishoras">{{hora}}:{{minutos}}</span>
+            <span class="segundos">:{{segundos}}</span>
+            <span class="ampm">{{ampm}}</span>
+        </h4>
+    </div>
+    <form [formGroup]="entrar" class="mb-4">
         <div class="input-group input-group-lg mt-4 mb-5">
-            <input type="text" [(ngModel)]="params.id" formControlName="id" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="id" placeholder="Introduce el id de reservacion">
-            
+            <input type="text" [(ngModel)]="params.id" formControlName="id" class="form-control "
+                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="id"
+                placeholder="Introduce el id de reservacion">
+            <span style="position:absolute; right:8px;top:15px;" class="fa fa-car"></span>
         </div>
         <div class="text-center form-group">
             <button type="submit" class="btn btn-primary btn-lg" (click)="Valida()">Ingresar</button>
@@ -15,24 +23,17 @@
 <ng-template #visitante>
     <div class="container">
         <img src="../../../assets/imagenes/dashboard2.jpg">
-        <form [formGroup]="entrar"  class="mb-4">
+        <div class="container text-center">
+            <h4>{{dia}} {{fecha}}
+                <span class="mishoras">{{hora}}:{{minutos}}</span>
+                <span class="segundos">:{{segundos}}</span>
+                <span class="ampm">{{ampm}}</span>
+            </h4>
+        </div>
+        <form [formGroup]="entrar" class="mb-4">
             <div class="text-center form-group">
                 <button type="submit" class="btn btn-primary btn-lg" (click)="IngresaInvitado()">Ingresar</button>
             </div>
         </form>
     </div>
 </ng-template>
-<div class="clock">
-    <p>{{dia}}</p>
-    <p>{{fecha}}</p>
-    <div class="hours">
-        <div class="horas">
-            <span class="mishoras">{{hora}}:{{minutos}}</span>
-            <span class="segundos">:{{segundos}}</span>
-        </div>
-    </div>
-    <div></div>
-    <span></span>
-    
-    
-</div>

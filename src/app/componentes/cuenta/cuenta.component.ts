@@ -7,6 +7,7 @@ import {PagarventaService} from '../../service/pagarventa.service';
 import Swal from 'sweetalert2';
 import { first } from 'rxjs/operators';
 import { formatDate } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cuenta',
@@ -16,7 +17,7 @@ import { formatDate } from '@angular/common';
 export class CuentaComponent implements OnInit {
 
   constructor(private segundo: RelojService, private venta: PagarventaService, private sTarifa:ObtenerTarifaHoraService,
-    private FormBuilder: FormBuilder) { }
+    private FormBuilder: FormBuilder,private titleService: Title) { }
 
   datos$: Observable<valorReloj>;
   hora: number;
@@ -43,8 +44,8 @@ export class CuentaComponent implements OnInit {
     this.datos$.subscribe(x => {
       this.hora = x.hora;
       this.minutos = x.minutos;
-      this.dia = x.diadesemana;
-      this.fecha = x.diaymes;
+      this.dia = x.diadesemana.toUpperCase();;
+      this.fecha = x.diaymes.toUpperCase();;
       this.segundos = x.segundo
     });
 
@@ -54,6 +55,7 @@ export class CuentaComponent implements OnInit {
     .subscribe(data=>{
       this.tarifa=data[0].TarifaHora;
     });
+    this.titleService.setTitle("Pagar Cuenta");
   }
 
   Salir():void{

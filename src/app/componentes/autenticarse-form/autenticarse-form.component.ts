@@ -4,6 +4,7 @@ import {AutenticarseSService} from '../../service/autenticarse-s.service';
 import { FormsModule, FormGroup, FormBuilder, Validators, NgForm, ReactiveFormsModule} from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -21,13 +22,15 @@ export class AutenticarseFormComponent implements OnInit {
     password:null
   }
   constructor(private AutenticarseSService: AutenticarseSService,private http: HttpClient,
-    private FormBuilder: FormBuilder, private router: Router) { }
+    private FormBuilder: FormBuilder, private router: Router,
+    private titleService: Title) { }
 
   ngOnInit(): void {
     this.autenticarse=this.FormBuilder.group({
       email:['',[Validators.required,Validators.email]],
       password:['',Validators.required]
     });
+    this.titleService.setTitle("Iniciar Sesión");
   }
 
   get f() { return this.autenticarse.controls;}
