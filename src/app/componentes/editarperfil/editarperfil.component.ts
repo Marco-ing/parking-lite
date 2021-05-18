@@ -39,6 +39,7 @@ export class EditarperfilComponent implements OnInit {
     })
     //console.log(this.Usuario);
     this.titleService.setTitle("Editar Perfil");
+    
 
   }
 
@@ -66,15 +67,7 @@ export class EditarperfilComponent implements OnInit {
       return;
     }
 
-    this.UsuarioModificado = new Users(0,
-      this.perfil.value.nombre,
-      this.perfil.value.apellidoPaterno,
-      this.perfil.value.apellidoMaterno,
-      this.perfil.value.correo,
-      this.perfil.value.password,
-      this.perfil.value.numeroTarjeta,
-      this.perfil.value.titularTarjeta
-    );
+    
 
     Swal.fire({
       title: "Modificar datos",
@@ -84,6 +77,15 @@ export class EditarperfilComponent implements OnInit {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if(result.isConfirmed){
+        this.UsuarioModificado = new Users(0,
+          this.perfil.value.nombre,
+          this.perfil.value.apellidoPaterno,
+          this.perfil.value.apellidoMaterno,
+          this.perfil.value.correo,
+          this.perfil.value.password,
+          this.perfil.value.numeroTarjeta,
+          this.perfil.value.titularTarjeta
+        );
         this.ServicioEditarPerfil.actualizar(this.UsuarioModificado).subscribe(datos => {
           if (datos['resultado'] == 'OK') {
             Swal.fire({
@@ -94,14 +96,16 @@ export class EditarperfilComponent implements OnInit {
             })
           }
         });
+        this.ActualizarInformacion();
       }
+      this.ActualizarInformacion();
     })
+
+  
 
     
 
     /* SE VUELVE A LLAMAR EL MÉTODO DE AUTENTICACION PARA CARGAR LA NUEVA INFORMACION */
-    this.ActualizarInformacion();
-    this.ActualizarInformacion();
   }
 
 
@@ -152,6 +156,6 @@ export class EditarperfilComponent implements OnInit {
           this.router.navigate([redirect]);
         }
       );
-
   }
+  
 }

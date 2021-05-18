@@ -13,7 +13,7 @@
                                 FROM usuario 
                                 JOIN socio 
                                 ON usuario.IdUsuario=socio.IdSocio 
-                                WHERE socio.Correo='$params->correo'");
+                                WHERE usuario.Correo='$params->correo'");
         class Result {}
 
         $respuesta = new Result();
